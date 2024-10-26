@@ -52,12 +52,39 @@ if 'chat_session' not in st.session_state :
     st.session_state.chat_session = None
 
 elif options == "Home" :
-    st.title("News Summarizer Tool")
-    st.write("This is a tool that summarizes news articles.")
+   st.title('News Summarizer Tool')
+   st.write("Welcome to the News Article Summarizer Tool, designed to provide you with clear, concise, and well-structured summaries of news articles. This tool is ideal for readers who want to quickly grasp the essential points of any news story without wading through lengthy articles. Whether you’re catching up on global events, diving into business updates, or following the latest political developments, this summarizer delivers all the important details in a brief, easily digestible format.")
+   st.write("## What the Tool Does")
+   st.write("The News Article Summarizer Tool reads and analyzes full-length news articles, extracting the most critical information and presenting it in a structured manner. It condenses lengthy pieces into concise summaries while maintaining the integrity of the original content. This enables users to quickly understand the essence of any news story.")
+   st.write("## How It Works")
+   st.write("The tool follows a comprehensive step-by-step process to create accurate and objective summaries:")
+   st.write("*Analyze and Extract Information:* The tool carefully scans the article, identifying key elements such as the main event or issue, people involved, dates, locations, and any supporting evidence like quotes or statistics.")
+   st.write("*Structure the Summary:* It organizes the extracted information into a clear, consistent format. This includes:")
+   st.write("- *Headline:* A brief, engaging headline that captures the essence of the story.")
+   st.write("- *Lead:* A short introduction summarizing the main event.")
+   st.write("- *Significance:* An explanation of why the news matters.")
+   st.write("- *Details:* A concise breakdown of the key points.")
+   st.write("- *Conclusion:* A wrap-up sentence outlining future implications or developments.")
+   st.write("# Why Use This Tool?")
+   st.write("- *Time-Saving:* Quickly grasp the key points of any article without having to read through long pieces.")
+   st.write("- *Objective and Neutral:* The tool maintains an unbiased perspective, presenting only factual information.")
+   st.write("- *Structured and Consistent:* With its organized format, users can easily find the most relevant information, ensuring a comprehensive understanding of the topic at hand.")
+   st.write("# Ideal Users")
+   st.write("This tool is perfect for:")
+   st.write("- Busy professionals who need to stay informed but have limited time.")
+   st.write("- Students and researchers looking for quick, accurate summaries of current events.")
+   st.write("- Media outlets that want to provide readers with quick takes on trending news.")
+   st.write("Start using the News Article Summarizer Tool today to get concise and accurate insights into the news that matters most!")
 
 elif options == "About Us" :
-    st.title("About Us")
-    st.write("This is a tool that summarizes news articles.")
+     st.title('News Summarizer Tool')
+     st.subheader("About Us")
+     st.write("# Danielle Bagaforo Meer")
+     st.image('images/Meer.png')
+     st.write("## AI First Bootcamp Instructor")
+     st.text("Connect with me via Linkedin : https://www.linkedin.com/in/algorexph/")
+     st.text("Kaggle Account : https://www.kaggle.com/daniellebagaforomeer")
+     st.write("\n")
 
 elif options == "Model" :
     st.title("News Summarizer Tool")
@@ -69,29 +96,46 @@ elif options == "Model" :
     if submit_button:
         with st.spinner("Generating Summary..."):
             System_Prompt = System_Prompt = """
-You are an AI engineer specializing in summarizing news articles. Your task is to read a news article provided by the user and produce a clear, concise summary that retains the article’s main points, context, and key details. Follow these guidelines:
+You are an AI language model specializing in summarizing news articles concisely and accurately. Your role is to create informative summaries that highlight the main points, context, and key details of each article provided by the user, making it easy to understand the essential content at a glance.
 
-Identify Core Information:
+Role:
+You are tasked with reading each news article and producing a summary that captures the core message, critical details, and context of the story. Your summaries should be accessible to a broad audience, requiring no prior knowledge of the topic.
 
-Focus on the main topic, significant events, names, dates, locations, and any quantitative details (e.g., statistics, financial figures) essential to understanding the story.
-Highlight the article’s primary purpose, such as informing about an event, explaining a trend, or providing an update on an ongoing story.
-Capture Key Points:
+Instructions:
+Analyze the Core Information:
 
-Summarize important facts, developments, and any direct quotes that contribute significantly to the article’s context.
-Avoid minor details unless they add critical context.
-Preserve Context and Tone:
+Identify the article’s primary purpose (e.g., reporting an event, explaining a trend, or updating on an ongoing issue).
+Focus on capturing the who, what, when, where, why, and how of the story if relevant.
+Highlight only the essential events, developments, figures, and any necessary background.
+Structure the Summary:
 
-Maintain the article’s tone (e.g., neutral, optimistic, cautionary) to reflect the intended sentiment.
-Ensure any background information needed to understand the topic is included in a brief format.
-Conciseness and Clarity:
+Start with a clear introductory sentence that gives an overview of the main topic.
+In the following sentences, expand briefly on critical details such as significant events, important dates, names, or quotes that define the story.
+End with any notable impact or implications to provide closure if necessary.
+Use a Clear and Neutral Tone:
 
-Limit summaries to 3-5 sentences for short articles and 5-7 sentences for longer, complex articles.
-Use clear language that can be understood without prior knowledge of the topic.
-Avoid Personal Interpretation:
+Reflect the tone of the article, whether it’s neutral, cautionary, or optimistic, without introducing bias.
+Use language that is straightforward and jargon-free, especially for topics that may be complex or technical.
+Maintain Conciseness:
 
-Report only the information presented in the article without adding opinions or assumptions.
-If specific details are ambiguous or incomplete, mention only confirmed information.
-Objective: Provide a comprehensive, reader-friendly summary that encapsulates the article’s main points and value.
+Keep summaries between 3-5 sentences for short articles and 5-7 sentences for longer or complex articles.
+Avoid redundancy and focus on the essence of the story to ensure the summary remains brief yet informative.
+Context:
+The articles may vary in subject matter, including current events, business, technology, science, or entertainment news. Aim to provide summaries that make sense to readers who may not have detailed knowledge of the specific topic.
+
+Constraints:
+No Additional Assumptions: Only summarize the information present in the article. Avoid inserting opinions, assumptions, or external information not explicitly stated.
+Objective Reporting: If details are unclear or if there’s a lack of confirmed information, avoid speculative statements.
+Examples:
+Example 1
+Original Text: "A significant earthquake struck the southern coast of Japan on Wednesday, causing widespread damage and power outages in several cities. Local authorities have reported casualties and ongoing rescue efforts. Scientists warn of potential aftershocks and advise residents to stay alert."
+
+Summary: A strong earthquake hit Japan’s southern coast on Wednesday, leading to widespread damage and power outages. Authorities have confirmed casualties, and rescue operations are underway. Experts warn of potential aftershocks, urging residents to remain cautious.
+
+Example 2
+Original Text: "Tech giant XYZ Corp. announced a major breakthrough in AI technology with its new AI assistant. This assistant uses advanced machine learning to understand natural language more accurately than existing models. The company plans to release the assistant in 2024, aiming to revolutionize customer interactions."
+
+Summary: XYZ Corp. revealed a new AI assistant that advances natural language understanding, promising improvements over current models. Set for a 2024 release, the assistant aims to transform customer interactions through enhanced machine learning.
 """
 
             user_message = News_Article
