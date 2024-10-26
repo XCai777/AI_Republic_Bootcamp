@@ -41,10 +41,9 @@ with st.sidebar :
         default_index = 0,
         styles = {
             "icon" : {"color" : "#dec960", "font-size" : "20px"},
-            "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin"}
-            "nav-link-selected" : {"background-color" : "#dec960"}
-        }
-    )
+            "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin" : "5px", "--hover-color" : "#262730"},
+            "nav-link-selected" : {"background-color" : "#262730"}
+        })
 
 if 'messages' not in st.session_state :
     st.session_state.messages = []
