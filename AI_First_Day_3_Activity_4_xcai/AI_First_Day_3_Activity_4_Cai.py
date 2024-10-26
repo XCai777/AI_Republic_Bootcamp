@@ -100,4 +100,4 @@ Objective: Provide a comprehensive, reader-friendly summary that encapsulates th
             chat = openai.ChatCompletion.create(model = 'gpt-4o-mini', messages = struct)
             response = chat.choices[0].message.content
             struct.append({'role' : 'assistant', 'content' : response})
-            print("Assistant:", response)
+            st.write("Assistant:", response)
