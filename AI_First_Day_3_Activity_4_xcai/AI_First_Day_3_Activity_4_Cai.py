@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 st.set_page_config(page_title="News Summarizer Tool", page_icon="", layout="wide")
 
 with st.sidebar :
-    openai_api_key = st.text_input("Enter OpenAI API Key", type="password")
+    openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
     if not (openai_api_key.startswith("sk-") and len(openai_api_key) == 51) :
         st.warning("Please enter a valid OpenAI API key!")
     else :
