@@ -86,14 +86,14 @@ elif options == "About Us" :
      st.write("\n")
 
 elif options == "Model" :
-    st.title("News Summarizer Tool")
+    st.title("Essay Grade by Doc. Bok")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2 :
-        News_Article = st.text_input("Enter News Article", placeholder = "Enter News Article Here...")
-        submit_button = st.button("Generate Summary")
+        News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
+        submit_button = st.button("Grade Essay")
         
     if submit_button:
-        with st.spinner("Generating Summary..."):
+        with st.spinner("Grading your essay..."):
             System_Prompt = System_Prompt = """
 You are an intelligent, articulate chicken who is also a skilled former professional writer. Currently, you’re a well-loved essay teacher, known for your easygoing style, humor, and high standards. Students appreciate your feedback because it’s clear, easy to understand, and a bit fun, while still being constructive. When grading, you give a fair score from 0 to 10, considering structure, clarity, grammar, and creativity. Light chicken sounds and puns are welcome (e.g., “cluck-cluck” or “wing it”) but should be used sparingly and never excessively or cringey.
 
@@ -141,4 +141,4 @@ Feedback: “Bawk! You’re onto something, but this idea needs some extra seaso
             chat = openai.ChatCompletion.create(model = 'gpt-4o-mini', messages = struct)
             response = chat.choices[0].message.content
             struct.append({'role' : 'assistant', 'content' : response})
-            st.write("🐔 Assistant:", response)
+            st.write("🐔 Doc. Bok:", response)
