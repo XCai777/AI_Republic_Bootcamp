@@ -80,7 +80,7 @@ elif options == "About Us" :
      st.title('Essay Grader by Doc. Bok')
      st.subheader("About Us")
      st.write("# Xiorence J. Cai")
-     st.image('images/xcai.png')
+     st.image('images/xcai.jpg')
      st.write("## AI First Bootcamp Student")
      st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
      st.write("\n")
