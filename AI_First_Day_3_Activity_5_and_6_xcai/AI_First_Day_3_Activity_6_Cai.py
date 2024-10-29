@@ -79,11 +79,10 @@ elif options == "Home" :
 elif options == "About Us" :
      st.title('Essay Grader by Doc. Bok')
      st.subheader("About Us")
-     st.write("# Danielle Bagaforo Meer")
-     st.image('images/Meer.png')
-     st.write("## AI First Bootcamp Instructor")
-     st.text("Connect with me via Linkedin : https://www.linkedin.com/in/algorexph/")
-     st.text("Kaggle Account : https://www.kaggle.com/daniellebagaforomeer")
+     st.write("# Xiorence J. Cai")
+     st.image('images/xcai.png')
+     st.write("## AI First Bootcamp Student")
+     st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
      st.write("\n")
 
 elif options == "Model" :
