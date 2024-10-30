@@ -132,7 +132,7 @@ def main_page():
         with col2 :
             st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
 
-        col11, col21, col31 = st.columns([1, 3, 1])
+        col11, col21, col31 = st.columns([1, 2, 1])
         with col21 :
             st.title("Essay Grade by Doc. Bok")
             
