@@ -40,9 +40,6 @@ def set_background(image_path):
 
 set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
 
-# Apply the CSS with markdown
-st.markdown(background_css, unsafe_allow_html=True)
-
 if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
     st.session_state["api_key"] = ""
