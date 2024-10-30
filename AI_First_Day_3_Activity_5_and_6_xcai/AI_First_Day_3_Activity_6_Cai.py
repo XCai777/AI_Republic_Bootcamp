@@ -130,11 +130,15 @@ def main_page():
     elif options == "Model" :
         col1, col2, col3 = st.columns([1, 3, 1])
         with col2 :
-            st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png", use_column_width=True)
+            st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
+
+        col11, col21, col31 = st.columns([1, 1, 1])
+        with col21 :
             st.title("Essay Grade by Doc. Bok")
             
-        News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
-        with col2 :
+        col12, col22, col32 = st.columns([1, 5, 1])    
+        with col22 :
+            News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
             submit_button = st.button("Grade Essay")
             
         if submit_button:
