@@ -61,9 +61,6 @@ def login():
             
 # Home page content
 def main_page():
-    st.title("Welcome to the Main Page!")
-    st.write("You are successfully logged in.")
-    st.write("Your OpenAI API Key is securely stored in the session.")
     with st.sidebar :
         st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
         #openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
@@ -131,9 +128,10 @@ def main_page():
          st.write("\n")
     
     elif options == "Model" :
-        st.title("Essay Grade by Doc. Bok")
-        col1, col2, col3 = st.columns([1, 2, 1])
+        col1, col2, col3 = st.columns([1, 4, 1])
         with col2 :
+            st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
+            st.title("Essay Grade by Doc. Bok")
             News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
             submit_button = st.button("Grade Essay")
             
