@@ -20,6 +20,9 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Essay Grader by Doc. Bok", page_icon="🐔", layout="wide")
 
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+    
 # Log-in page simulation
 def login():
     st.title("Log In")
@@ -157,10 +160,6 @@ def home():
                 struct.append({'role' : 'assistant', 'content' : response})
                 st.write("🐔 Doc. Bok:", response)
 
-            
-# Initialize session state for login status
-if "logged_in" not in st.session_state:
-    st.session_state["logged_in"] = False
 
 # Display login or home page based on login status
 if st.session_state["logged_in"]:
