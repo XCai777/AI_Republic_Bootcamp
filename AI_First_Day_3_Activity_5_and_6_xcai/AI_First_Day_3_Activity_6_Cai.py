@@ -52,6 +52,7 @@ def login():
             
             # Use st.query_params to set the logged_in query param
             st.query_params = {"logged_in": "true"}
+            st.experimental_rerun()
         else:
             st.error("Invalid API Key. Please try again.")
             
