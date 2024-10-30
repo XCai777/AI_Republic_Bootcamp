@@ -46,6 +46,31 @@ with st.sidebar :
             "nav-link-selected" : {"background-color" : "#262730"}
         })
 
+# Log-in page simulation
+def login():
+    st.title("Log In")
+    token = st.text_input("Enter OpenAI API Key", type="password")
+    if st.button("Log In"):
+        if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
+            st.warning("Invalid API Token")
+        else :
+            st.session_state["logged_in"] = True
+
+# Home page content
+def home():
+    st.title("Home Page")
+    st.write("Welcome to your Streamlit application!")
+
+# Initialize session state for login status
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+
+# Display login or home page based on login status
+if st.session_state["logged_in"]:
+    home()
+else:
+    login()
+
 if 'messages' not in st.session_state :
     st.session_state.messages = []
 
@@ -143,28 +168,3 @@ Feedback: “Bawk! You’re onto something, but this idea needs some extra seaso
             response = chat.choices[0].message.content
             struct.append({'role' : 'assistant', 'content' : response})
             st.write("🐔 Doc. Bok:", response)
-
-# Log-in page simulation
-def login():
-    st.title("Log In")
-    token = st.text_input("Enter OpenAI API Key", type="password")
-    if st.button("Log In"):
-        if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
-            st.warning("Invalid API Token")
-        else :
-            st.session_state["logged_in"] = True
-
-# Home page content
-def home():
-    st.title("Home Page")
-    st.write("Welcome to your Streamlit application!")
-
-# Initialize session state for login status
-if "logged_in" not in st.session_state:
-    st.session_state["logged_in"] = False
-
-# Display login or home page based on login status
-if st.session_state["logged_in"]:
-    home()
-else:
-    login()
