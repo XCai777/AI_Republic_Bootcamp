@@ -134,7 +134,7 @@ def main_page():
 
         col11, col21, col31 = st.columns([2, 3, 2])
         with col21 :
-            st.title("Essay Grade by Doc. Bok")
+            st.title("Essay Grader by Doc. Bok")
             
         col12, col22, col32 = st.columns([1, 5, 1])    
         with col22 :
