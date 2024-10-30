@@ -16,6 +16,7 @@ import streamlit as st
 import warnings
 from streamlit_option_menu import option_menu
 from streamlit_extras.mention import mention
+import base64
 
 warnings.filterwarnings("ignore")
 
@@ -23,7 +24,8 @@ st.set_page_config(page_title="Essay Grader by Doc. Bok", page_icon="🐔", layo
 
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
-        image_data = image_file.read().encode("base64").decode("utf-8")
+        # Encode the image as base64 and decode it to a string
+        image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
     background_style = f"""
     <style>
