@@ -11,6 +11,7 @@ from langchain.vectorstores import Chroma
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from openai.embeddings_utils import get_embedding
+from PIL import Image
 import streamlit as st
 import warnings
 from streamlit_option_menu import option_menu
@@ -94,9 +95,11 @@ def main_page():
         st.session_state.chat_session = None
     
     elif options == "Home" :
+       image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
+       resized_image = image.resize((300, 300))
        col01, col02= st.columns([1,2])
        with col01 :
-           st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
+           st.image("resized_image")
        with col02 :
            st.title('Essay Grader by Doc. Bok')
            st.write("Welcome to the automated essay grader by your highly intelligent chicken, Doc. Bok. This chatbot is designed to provide you with clear, concise, and well-structured grade and feed back of essays you have inputted with a bit of humor. This tool is ideal for teacher and students who want the essays to be graded constructively as well as too bored reading monotonous sequence of words.")
