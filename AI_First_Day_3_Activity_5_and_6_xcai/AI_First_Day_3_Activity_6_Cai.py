@@ -51,7 +51,7 @@ def login():
             st.success("Login successful!")
             
             # Use query params to simulate rerunning the app
-            st.experimental_set_query_params(logged_in="true")
+            st.query_params(logged_in="true")
         else:
             st.error("Invalid API Key. Please try again.")
             
@@ -183,7 +183,7 @@ def main_page():
 
 
 # Display login or home page based on login status
-query_params = st.experimental_get_query_params()
+query_params = st.query_params()
 if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
     main_page()
 else:
