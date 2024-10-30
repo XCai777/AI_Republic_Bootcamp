@@ -77,7 +77,7 @@ def main_page():
     
         options = option_menu(
             "Dashboard", 
-            ["Home", "About Us", "Model"],
+            ["Home", "About Me", "Model"],
             icons = ['book', 'globe', 'tools'],
             menu_icon = "book", 
             default_index = 0,
@@ -118,11 +118,11 @@ def main_page():
        st.write("- Media outlets that want to provide readers with cohessive and informative articles.")
        st.write("Start using the Essay Grader by Doc. Bok Tool today to get concise and accurate feedback for your essays!")
     
-    elif options == "About Us" :
+    elif options == "About Me" :
          st.title('Essay Grader by Doc. Bok')
          st.subheader("About Us")
-         st.write("# Xiorence J. Cai")
          st.image('AI_First_Day_3_Activity_5_and_6_xcai/images/xcai.jpg')
+         st.write("# Xiorence J. Cai")
          st.write("## AI First Bootcamp Student")
          st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
          st.write("\n")
