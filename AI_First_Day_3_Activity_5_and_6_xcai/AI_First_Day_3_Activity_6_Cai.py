@@ -128,11 +128,11 @@ def main_page():
          st.write("\n")
     
     elif options == "Model" :
-        col1, col2, col3 = st.columns([1, 3, 1])
+        col1, col2, col3 = st.columns([1, 1, 1])
         with col2 :
             st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
 
-        col11, col21, col31 = st.columns([1, 1, 1])
+        col11, col21, col31 = st.columns([1, 3, 1])
         with col21 :
             st.title("Essay Grade by Doc. Bok")
             
