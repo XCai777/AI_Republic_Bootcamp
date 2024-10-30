@@ -21,6 +21,24 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Essay Grader by Doc. Bok", page_icon="🐔", layout="wide")
 
+def set_background(image_path):
+    with open(image_path, "rb") as image_file:
+        image_data = image_file.read().encode("base64").decode("utf-8")
+
+    background_style = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{image_data}");
+        background-size: cover;
+        background-position: center;
+    }}
+    </style>
+    """
+    st.markdown(background_style, unsafe_allow_html=True)
+
+# Path to your background image
+set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
+
 if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
     st.session_state["api_key"] = ""
