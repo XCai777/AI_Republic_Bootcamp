@@ -41,7 +41,7 @@ def verify_api_key(api_key):
 
 # Define the login page function
 def login():
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 1, 1])
     with col2 :
         st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
         st.title("Login with OpenAI API Key")
