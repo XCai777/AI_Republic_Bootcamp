@@ -22,20 +22,23 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Essay Grader by Doc. Bok", page_icon="🐔", layout="wide")
 
-image_url = "AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg"  # Or use a local path like 'background.jpg'
+def set_background(image_path):
+    with open(image_path, "rb") as image_file:
+        # Encode the image as base64 and decode it to a string
+        image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
-# CSS to set the full-background image
-background_css = f"""
+    background_style = f"""
     <style>
     .stApp {{
-        background-image: url("{image_url}");
+        background-image: url("data:image/png;base64,{image_data}");
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
     }}
     </style>
     """
+    st.markdown(background_style, unsafe_allow_html=True)
+
+set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
 
 # Apply the CSS with markdown
 st.markdown(background_css, unsafe_allow_html=True)
