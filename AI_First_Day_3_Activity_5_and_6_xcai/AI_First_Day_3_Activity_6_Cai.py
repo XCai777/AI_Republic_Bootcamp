@@ -27,7 +27,7 @@ def login():
     if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
         st.warning("Please enter a valid OpenAI API key!")
     else :
-        st.success("API key valid!"
+        st.success("API key valid!")
             
 # Home page content
 def home():
