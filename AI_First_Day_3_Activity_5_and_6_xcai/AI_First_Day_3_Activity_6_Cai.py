@@ -183,7 +183,7 @@ def main_page():
 
 
 # Display login or home page based on login status
-query_params = st.query_params()
+query_params = st.query_params  # Access query_params directly
 if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
     main_page()
 else:
