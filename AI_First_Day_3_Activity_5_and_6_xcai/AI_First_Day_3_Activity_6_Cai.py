@@ -41,7 +41,10 @@ def verify_api_key(api_key):
 
 # Define the login page function
 def login():
-    st.title("Login with OpenAI API Key")
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2 :
+        st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
+        st.title("Login with OpenAI API Key")
     api_key = st.text_input("Enter your OpenAI API Key", type="password")
     
     if st.button("Log In"):
@@ -187,6 +190,5 @@ def main_page():
 query_params = st.query_params  # Use st.query_params for retrieval
 if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
     main_page()
-    options = "Home"
 else:
     login()
