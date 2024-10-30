@@ -97,7 +97,7 @@ def main_page():
     elif options == "Home" :
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((300, 300))
-       col01, col02, col03= st.columns([1,2,1])
+       col01, col02, col03= st.columns([2,2,1])
        with col02 :
            st.image(resized_image)
        st.title('Essay Grader by Doc. Bok')
