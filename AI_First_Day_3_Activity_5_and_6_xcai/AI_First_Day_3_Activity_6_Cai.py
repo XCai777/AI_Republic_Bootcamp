@@ -22,20 +22,39 @@ st.set_page_config(page_title="Essay Grader by Doc. Bok", page_icon="🐔", layo
 
 if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
-    
-# Log-in page simulation
+    st.session_state["api_key"] = ""
+
+# Define a function to verify the API key
+def verify_api_key(api_key):
+    try:
+        # Set the OpenAI API key
+        openai.api_key = api_key
+        
+        # Make a small test request to verify if the key is valid
+        openai.Model.list()
+        
+        # If the request is successful, return True
+        return True
+    except Exception as e:
+        # If there's an error, the API key is likely invalid
+        return False
+
+# Define the login page function
 def login():
-    st.title("Log In")
-    openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
-    if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
-        st.session_state["logged_in"] = False
-        st.warning("Please enter a valid OpenAI API key!")
-    else :
-        st.session_state["logged_in"] = True
-        st.success("API key valid!")
+    st.title("Login with OpenAI API Key")
+    api_key = st.text_input("Enter your OpenAI API Key", type="password")
+    
+    if st.button("Log In"):
+        if verify_api_key(api_key):
+            st.session_state["logged_in"] = True
+            st.session_state["api_key"] = api_key
+            st.success("Login successful!")
+            st.experimental_rerun()  # Refresh the app to show the main page
+        else:
+            st.error("Invalid API Key. Please try again.")
             
 # Home page content
-def home():
+def main_page():
     with st.sidebar :
         st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
         #openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
@@ -163,6 +182,6 @@ def home():
 
 # Display login or home page based on login status
 if st.session_state["logged_in"]:
-    home()
+    main_page()
 else:
     login()
