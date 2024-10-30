@@ -99,7 +99,7 @@ def main_page():
        resized_image = image.resize((300, 300))
        col01, col02= st.columns([1,2])
        with col01 :
-           st.image(resized_image, caption="Resized Image", use_column_width=False)
+           st.image(resized_image, caption="Resized Image", use_column_width=True)
        with col02 :
            st.title('Essay Grader by Doc. Bok')
            st.write("Welcome to the automated essay grader by your highly intelligent chicken, Doc. Bok. This chatbot is designed to provide you with clear, concise, and well-structured grade and feed back of essays you have inputted with a bit of humor. This tool is ideal for teacher and students who want the essays to be graded constructively as well as too bored reading monotonous sequence of words.")
