@@ -128,11 +128,13 @@ def main_page():
          st.write("\n")
     
     elif options == "Model" :
-        col1, col2, col3 = st.columns([1, 4, 1])
+        col1, col2, col3 = st.columns([1, 3, 1])
         with col2 :
             st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png", use_column_width=True)
-            st.title("Essay Grade by Doc. Bok", use_column_width=True)
-            News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
+            st.title("Essay Grade by Doc. Bok")
+            
+        News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
+        with col2 :
             submit_button = st.button("Grade Essay")
             
         if submit_button:
