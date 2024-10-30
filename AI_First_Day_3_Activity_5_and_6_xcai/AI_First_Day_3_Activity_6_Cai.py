@@ -18,14 +18,15 @@ from streamlit_extras.mention import mention
 
 warnings.filterwarnings("ignore")
 
-st.set_page_config(page_title="News Summarizer Tool", page_icon="", layout="wide")
+st.set_page_config(page_title="Essay Grader by Doc. Bok", page_icon="🐔", layout="wide")
 
 with st.sidebar :
-    openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
-    if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
-        st.warning("Please enter a valid OpenAI API key!")
-    else :
-        st.success("API key valid!")
+    st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
+    #openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
+    #if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
+    #    st.warning("Please enter a valid OpenAI API key!")
+    #else :
+    #    st.success("API key valid!")
     
     with st.container() :
         l, m, r = st.columns((1, 3, 1))
@@ -142,3 +143,28 @@ Feedback: “Bawk! You’re onto something, but this idea needs some extra seaso
             response = chat.choices[0].message.content
             struct.append({'role' : 'assistant', 'content' : response})
             st.write("🐔 Doc. Bok:", response)
+
+# Log-in page simulation
+def login():
+    st.title("Log In")
+    token = st.text_input("Enter OpenAI API Key", type="password")
+    if st.button("Log In"):
+        if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
+            st.warning("Invalid API Token")
+        else :
+            st.session_state["logged_in"] = True
+
+# Home page content
+def home():
+    st.title("Home Page")
+    st.write("Welcome to your Streamlit application!")
+
+# Initialize session state for login status
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+
+# Display login or home page based on login status
+if st.session_state["logged_in"]:
+    home()
+else:
+    login()
