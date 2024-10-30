@@ -49,6 +49,9 @@ def login():
             st.session_state["logged_in"] = True
             st.session_state["api_key"] = api_key
             st.success("Login successful!")
+            
+            # Use st.query_params to set the logged_in query param
+            st.query_params = {"logged_in": "true"}
         else:
             st.error("Invalid API Key. Please try again.")
             
@@ -180,7 +183,8 @@ def main_page():
 
 
 # Display login or home page based on login status
-if st.session_state["logged_in"]:
+query_params = st.query_params  # Use st.query_params for retrieval
+if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
     main_page()
 else:
     login()
