@@ -51,7 +51,7 @@ def login():
             st.success("Login successful!")
             
             # Use query params to simulate rerunning the app
-            st.query_params(logged_in="true")
+            st.experimental_set_query_params(logged_in="true")
         else:
             st.error("Invalid API Key. Please try again.")
             
