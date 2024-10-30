@@ -187,5 +187,6 @@ def main_page():
 query_params = st.query_params  # Use st.query_params for retrieval
 if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
     main_page()
+    options = "Home"
 else:
     login()
