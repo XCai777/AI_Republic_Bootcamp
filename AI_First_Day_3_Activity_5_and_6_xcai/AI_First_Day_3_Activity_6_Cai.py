@@ -25,8 +25,10 @@ def login():
     st.title("Log In")
     openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
     if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
+        st.session_state["logged_in"] = False
         st.warning("Please enter a valid OpenAI API key!")
     else :
+        st.session_state["logged_in"] = True
         st.success("API key valid!")
             
 # Home page content
