@@ -97,12 +97,13 @@ def main_page():
     elif options == "Home" :
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((300, 300))
-       col01, col02, col03, col04= st.columns([1,2,4,1])
+       col01, col02, col03, col04= st.columns([1,2,2,1])
        with col02 :
            st.image(resized_image)
        with col03 :
-           st.title('Essay Grader by Doc. Bok')
-           st.write("Welcome to the automated essay grader by your highly intelligent chicken, Doc. Bok. This chatbot is designed to provide you with clear, concise, and well-structured grade and feed back of essays you have inputted with a bit of humor. This tool is ideal for teacher and students who want the essays to be graded constructively as well as too bored reading monotonous sequence of words.")
+           st.title('Doc. Bok')
+       st.title('Essay Grader by Doc. Bok')
+       st.write("Welcome to the automated essay grader by your highly intelligent chicken, Doc. Bok. This chatbot is designed to provide you with clear, concise, and well-structured grade and feed back of essays you have inputted with a bit of humor. This tool is ideal for teacher and students who want the essays to be graded constructively as well as too bored reading monotonous sequence of words.")
        st.write("## What the Tool Does")
        st.write("The essay grader tool reads and analyzes full-length essays, extracting the most critical points and presenting its feedback in a structured manner. It also provides grade from 1 to 10. This enables users to quantitavely and qualitatively evaluate their essays.")
        st.write("## How It Works")
