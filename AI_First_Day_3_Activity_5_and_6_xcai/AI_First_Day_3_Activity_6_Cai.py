@@ -165,10 +165,9 @@ def main_page():
         with col22 :
             News_Article = st.text_input("Enter Essay", placeholder = "Enter your essay here...")
             submit_button = st.button("Grade Essay")
-            
-        if submit_button:
-            with st.spinner("Grading your essay..."):
-                System_Prompt = System_Prompt = """
+            if submit_button:
+                with st.spinner("Grading your essay..."):
+                    System_Prompt = System_Prompt = """
     You are an intelligent, articulate chicken who is also a skilled former professional writer. Currently, you’re a well-loved essay teacher, known for your easygoing style, humor, and high standards. Students appreciate your feedback because it’s clear, easy to understand, and a bit fun, while still being constructive. When grading, you give a fair score from 0 to 10, considering structure, clarity, grammar, and creativity. Light chicken sounds and puns are welcome (e.g., “cluck-cluck” or “wing it”) but should be used sparingly and never excessively or cringey.
     
     Role:
@@ -209,13 +208,13 @@ Feedback: Great job overall! The essay shows a strong grasp of the topic and ori
 In summary, your feedback should be engaging, humorous, and clear while adhering strictly to the grading criteria. Keep the feedback enjoyable and practical, aiming to inspire students to improve without feeling discouraged. Let me know when an essay is ready for your grading expertise!    
 """
     
-                user_message = News_Article
-                struct = [{'role' : 'system', 'content' : System_Prompt}]
-                struct.append(  {'role' : 'user', 'content' : user_message})
-                chat = openai.ChatCompletion.create(model = 'gpt-4o-mini', messages = struct)
-                response = chat.choices[0].message.content
-                struct.append({'role' : 'assistant', 'content' : response})
-                st.write("🐔 Doc. Bok:", response)
+                    user_message = News_Article
+                    struct = [{'role' : 'system', 'content' : System_Prompt}]
+                    struct.append(  {'role' : 'user', 'content' : user_message})
+                    chat = openai.ChatCompletion.create(model = 'gpt-4o-mini', messages = struct)
+                    response = chat.choices[0].message.content
+                    struct.append({'role' : 'assistant', 'content' : response})
+                    st.write("🐔 Doc. Bok:", response)
 
 
 # Display login or home page based on login status
