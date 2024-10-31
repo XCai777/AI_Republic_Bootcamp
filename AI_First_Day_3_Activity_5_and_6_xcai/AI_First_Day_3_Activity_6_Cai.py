@@ -83,11 +83,6 @@ def login():
 def main_page():
     with st.sidebar :
         st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
-        #openai.api_key = st.text_input("Enter OpenAI API Key", type="password")
-        #if not (openai.api_key.startswith("sk-") and len(openai.api_key) == 51) :
-        #    st.warning("Please enter a valid OpenAI API key!")
-        #else :
-        #    st.success("API key valid!")
         
         with st.container() :
             l, m, r = st.columns((1, 3, 1))
@@ -98,7 +93,7 @@ def main_page():
         options = option_menu(
             "Dashboard", 
             ["Home", "About Me", "Model"],
-            icons = ['house', 'man', 'tools'],
+            icons = ['home', 'user', 'brain'],
             menu_icon = "book", 
             default_index = 0,
             styles = {
