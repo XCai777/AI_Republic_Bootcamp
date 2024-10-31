@@ -108,6 +108,7 @@ def main_page():
 
 
     if st.session_state["initial_login_state"] == True :
+        st.session_state["initial_login_state"] = False
         st.title('WELCOME to Essay Grader by Doc. Bok!')
         st.write("## Click the following: ")
         st.write("#Home")
@@ -116,9 +117,8 @@ def main_page():
         st.write("Ah, so you're curious about the chick behind the feathers, huh? Well, here you’ll find the scoop on yours truly. Consider this my digital nest – where you can get to know my background and why I’m fit to help with all things writing!")
         st.write("#Model: ")
         st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")
-        st.session_state["initial_login_state"] = False
         
-    elif 'chat_session' not in st.session_state :
+    if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
         
     elif options == "Home" :
