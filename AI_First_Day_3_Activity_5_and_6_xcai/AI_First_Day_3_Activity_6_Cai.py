@@ -228,7 +228,7 @@ def main_page():
         st.session_state.messages = []
 
     if st.session_state.get("initial_login_state"):
-        options = "Home"
+        Home()
         st.session_state["initial_login_state"] = False  # Reset after redirect
         
     if 'chat_session' not in st.session_state :
