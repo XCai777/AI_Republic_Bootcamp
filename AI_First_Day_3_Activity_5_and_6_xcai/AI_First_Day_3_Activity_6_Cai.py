@@ -236,13 +236,13 @@ def main_page():
     elif options == "Home" :
         Home()
         
-    elif options == "About Doc. Bok" :
+    elif options == "Doc. Bok" :
         Doc_Bok()
         
     elif options == "About Me" :
         About_Me()
     
-    elif options == "Model" :
+    elif options == "Essay Grader" :
         Essay_Grader()
 
 
