@@ -72,6 +72,7 @@ def login():
         if verify_api_key(api_key):
             st.session_state["logged_in"] = True
             st.session_state["api_key"] = api_key
+            st.session_state["initial_login_state"] = True
             st.success("Login successful!")
             
             # Use st.query_params to set the logged_in query param
@@ -226,9 +227,10 @@ def main_page():
     if 'messages' not in st.session_state :
         st.session_state.messages = []
 
-    #if st.session_state["initial_login_state"] == True :
-    #    st.session_state["initial_login_state"] = False
-    #    Login_Page()
+    if st.session_state.get("initial_login_state"):
+        options = "Home"
+        st.session_state["initial_login_state"] = False  # Reset after redirect
+        st.rerun()   
         
     if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
@@ -249,7 +251,6 @@ def main_page():
 # Display login or home page based on login status
 query_params = st.query_params  # Use st.query_params for retrieval
 if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
-    st.session_state["initial_login_state"] = True
     main_page()
 else:
     login()
