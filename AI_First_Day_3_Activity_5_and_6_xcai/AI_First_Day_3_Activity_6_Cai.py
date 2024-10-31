@@ -146,7 +146,8 @@ def main_page():
     elif options == "About Me" :
          st.title('Essay Grader by Doc. Bok')
          st.subheader("About Us")
-         st.image('AI_First_Day_3_Activity_5_and_6_xcai/images/xcai.jpg')
+         My_image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/xcai.jpg")
+         my_resized_image = My_image.resize((300, 300))
          st.write("# Xiorence J. Cai")
          st.write("## AI First Bootcamp Student")
          st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
