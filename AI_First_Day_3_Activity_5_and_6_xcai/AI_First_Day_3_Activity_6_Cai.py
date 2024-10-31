@@ -90,7 +90,7 @@ def Home():
         st.write("#Model: ")
         st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")
 
-def About_Doc_Bok():
+def Doc_Bok():
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((500, 500))
        col01, col02, col03= st.columns([1,2,1])
@@ -135,7 +135,7 @@ def About_Me():
         st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
         st.write("\n")
 
-def Model():
+def Essay_Grader():
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2 :
             st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
@@ -213,8 +213,8 @@ def main_page():
     
         options = option_menu(
             "Dashboard", 
-            ["Home", "About Doc. Bok" , "Model", "About Me"],
-            icons = ['house', 'egg', 'person-circle', 'chat'],
+            ["Home", "Doc. Bok" , "Essay Grader", "About Me"],
+            icons = ['house', 'egg', 'chat', 'person-circle'],
             menu_icon = "book", 
             default_index = 0,
             styles = {
@@ -237,13 +237,13 @@ def main_page():
         Home()
         
     elif options == "About Doc. Bok" :
-        About_Doc_Bok()
+        Doc_Bok()
         
     elif options == "About Me" :
         About_Me()
     
     elif options == "Model" :
-        Model()
+        Essay_Grader()
 
 
 # Display login or home page based on login status
