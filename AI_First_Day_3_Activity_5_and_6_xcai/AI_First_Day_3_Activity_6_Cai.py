@@ -230,7 +230,6 @@ def main_page():
     if st.session_state.get("initial_login_state"):
         options = "Home"
         st.session_state["initial_login_state"] = False  # Reset after redirect
-        st.rerun()   
         
     if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
