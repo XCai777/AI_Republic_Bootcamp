@@ -109,7 +109,7 @@ def main_page():
     if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
         
-    if initial_login_state :
+    if initial_login_state == True :
         options == "Home"
         initial_login_state = False
         
