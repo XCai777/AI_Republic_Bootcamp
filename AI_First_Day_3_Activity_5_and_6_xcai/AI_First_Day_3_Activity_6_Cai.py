@@ -80,7 +80,7 @@ def login():
         else:
             st.error("Invalid API Key. Please try again.")
 
-def Login_Page():
+def Home():
         st.title('WELCOME to Essay Grader by Doc. Bok!')
         st.write("## Click the following: ")
         st.write("#Home")
@@ -90,7 +90,7 @@ def Login_Page():
         st.write("#Model: ")
         st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")
 
-def Home():
+def About_Doc_Bok():
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((500, 500))
        col01, col02, col03= st.columns([1,2,1])
@@ -209,8 +209,8 @@ def main_page():
     
         options = option_menu(
             "Dashboard", 
-            ["Home", "About Me", "Model"],
-            icons = ['house', 'person-circle', 'chat'],
+            ["Home", "About Doc. Bok" , "Model", "About Me"],
+            icons = ['house', 'egg', 'person-circle', 'chat'],
             menu_icon = "book", 
             default_index = 0,
             styles = {
@@ -231,7 +231,10 @@ def main_page():
         
     elif options == "Home" :
         Home()
-    
+        
+    elif options == "About Doc. Bok" :
+        About_Doc_Bok()
+        
     elif options == "About Me" :
         About_Me()
     
