@@ -102,6 +102,10 @@ def main_page():
                 "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin" : "5px", "--hover-color" : "#262730"},
                 "nav-link-selected" : {"background-color" : "#262730"}
             })
+        
+    if 'messages' not in st.session_state :
+        st.session_state.messages = []
+
 
     if st.session_state["initial_login_state"] == True :
         st.title('WELCOME to Essay Grader by Doc. Bok!')
@@ -114,10 +118,7 @@ def main_page():
         st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")
         st.session_state["initial_login_state"] = False
         
-    if 'messages' not in st.session_state :
-        st.session_state.messages = []
-    
-    if 'chat_session' not in st.session_state :
+    elif 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
         
     elif options == "Home" :
