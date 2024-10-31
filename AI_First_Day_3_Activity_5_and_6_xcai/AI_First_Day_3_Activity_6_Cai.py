@@ -222,9 +222,9 @@ def main_page():
     if 'messages' not in st.session_state :
         st.session_state.messages = []
 
-    if st.session_state["initial_login_state"] == True :
-        st.session_state["initial_login_state"] = False
-        Login_Page()
+    #if st.session_state["initial_login_state"] == True :
+    #    st.session_state["initial_login_state"] = False
+    #    Login_Page()
         
     if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
