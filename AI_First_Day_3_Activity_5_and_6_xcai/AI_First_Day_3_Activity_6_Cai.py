@@ -102,16 +102,16 @@ def main_page():
                 "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin" : "5px", "--hover-color" : "#262730"},
                 "nav-link-selected" : {"background-color" : "#262730"}
             })
+
+    if st.session_state["initial_login_state"] == True :
+        options == "Home"
+        st.session_state["initial_login_state"] = False
         
     if 'messages' not in st.session_state :
         st.session_state.messages = []
     
     if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
-        
-    if st.session_state["initial_login_state"] == True :
-        options == "Home"
-        st.session_state["initial_login_state"] = False
         
     elif options == "Home" :
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
