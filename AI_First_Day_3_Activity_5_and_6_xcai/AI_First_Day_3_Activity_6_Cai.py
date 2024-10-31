@@ -96,6 +96,10 @@ def About_Doc_Bok():
        col01, col02, col03= st.columns([1,2,1])
        with col02 :
            st.image(resized_image)
+       st.title('Doc. Bok')
+       st.write("Allow me to introduce myself—I'm Doc. Bok, the feathered font of wisdom on all things essay-related! With a background that goes way beyond the coop, I’ve spent my days scratching through the pages of academia, cracking the mysteries of grammar, and pecking at the heart of what makes an essay soar (or, well, lay an egg).")
+       st.write("Picture this: I’m a white chicken with a scholarly red comb, tiny spectacles balanced just right, and a face that’s seen a few late-night roost sessions—those little eye bags don’t lie! Students flock to me not just for my knowledge, but for my relaxed vibe and some pun-filled yet pointed feedback. I’m strict on structure, clarity, grammar, and all the usual suspects, but don’t worry—I always keep my feedback sunny-side-up and easy to digest.")
+       st.write("So, if your essay needs a little polish or you’re wondering if it’s eggs-actly right, bring it my way! Doc. Bok’s got you covered with wisdom, wit, and just a pinch of chicken charm. 🐔")
        st.title('Essay Grader by Doc. Bok')
        st.write("Welcome to the automated essay grader by your highly intelligent chicken, Doc. Bok. This chatbot is designed to provide you with clear, concise, and well-structured grade and feed back of essays you have inputted with a bit of humor. This tool is ideal for teacher and students who want the essays to be graded constructively as well as too bored reading monotonous sequence of words.")
        st.write("## What the Tool Does")
