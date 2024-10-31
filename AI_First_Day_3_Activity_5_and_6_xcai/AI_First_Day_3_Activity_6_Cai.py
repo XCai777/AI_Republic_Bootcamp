@@ -79,35 +79,8 @@ def login():
             st.rerun()
         else:
             st.error("Invalid API Key. Please try again.")
-            
-# Home page content
-def main_page():
-    with st.sidebar :
-        st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
-        
-        with st.container() :
-            l, m, r = st.columns((1, 3, 1))
-            with l : st.empty()
-            with m : st.empty()
-            with r : st.empty()
-    
-        options = option_menu(
-            "Dashboard", 
-            ["Home", "About Me", "Model"],
-            icons = ['house', 'person-circle', 'chat'],
-            menu_icon = "book", 
-            default_index = 0,
-            styles = {
-                "icon" : {"color" : "#dec960", "font-size" : "20px"},
-                "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin" : "5px", "--hover-color" : "#262730"},
-                "nav-link-selected" : {"background-color" : "#262730"}
-            })
-        
-    if 'messages' not in st.session_state :
-        st.session_state.messages = []
 
-    if st.session_state["initial_login_state"] == True :
-        st.session_state["initial_login_state"] = False
+def Login_Page():
         st.title('WELCOME to Essay Grader by Doc. Bok!')
         st.write("## Click the following: ")
         st.write("#Home")
@@ -116,14 +89,9 @@ def main_page():
         st.write("Ah, so you're curious about the chick behind the feathers, huh? Well, here you’ll find the scoop on yours truly. Consider this my digital nest – where you can get to know my background and why I’m fit to help with all things writing!")
         st.write("#Model: ")
         st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")
-    else:
-        st.session_state["initial_login_state"] = False 
-        
-    if 'chat_session' not in st.session_state :
-        st.session_state.chat_session = None
-        
-    elif options == "Home" :
-       image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
+
+def Home():
+        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((500, 500))
        col01, col02, col03= st.columns([1,2,1])
        with col02 :
@@ -151,19 +119,19 @@ def main_page():
        st.write("- Students and researchers trying to evaluate the essays they are about to submit.")
        st.write("- Media outlets that want to provide readers with cohessive and informative articles.")
        st.write("Start using the Essay Grader by Doc. Bok Tool today to get concise and accurate feedback for your essays!")
-    
-    elif options == "About Me" :
-         st.title('Essay Grader by Doc. Bok')
-         st.subheader("About Me")
-         My_image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/xcai.jpg")
-         my_resized_image = My_image.resize((200, 200))
-         st.image(my_resized_image)
-         st.write("# Xiorence J. Cai")
-         st.write("## AI First Bootcamp Student")
-         st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
-         st.write("\n")
-    
-    elif options == "Model" :
+
+def About_Me():
+        st.title('Essay Grader by Doc. Bok')
+        st.subheader("About Me")
+        My_image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/xcai.jpg")
+        my_resized_image = My_image.resize((200, 200))
+        st.image(my_resized_image)
+        st.write("# Xiorence J. Cai")
+        st.write("## AI First Bootcamp Student")
+        st.text("Connect with me via Linkedin : https://www.linkedin.com/in/xiorence-cai-1b7a80179/")
+        st.write("\n")
+
+def Model():
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2 :
             st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
@@ -226,6 +194,49 @@ In summary, your feedback should be engaging, humorous, and clear while adhering
                     response = chat.choices[0].message.content
                     struct.append({'role' : 'assistant', 'content' : response})
                     st.write("🐔 Doc. Bok:", response)
+
+        
+# Home page content
+def main_page():
+    with st.sidebar :
+        st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
+        
+        with st.container() :
+            l, m, r = st.columns((1, 3, 1))
+            with l : st.empty()
+            with m : st.empty()
+            with r : st.empty()
+    
+        options = option_menu(
+            "Dashboard", 
+            ["Home", "About Me", "Model"],
+            icons = ['house', 'person-circle', 'chat'],
+            menu_icon = "book", 
+            default_index = 0,
+            styles = {
+                "icon" : {"color" : "#dec960", "font-size" : "20px"},
+                "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin" : "5px", "--hover-color" : "#262730"},
+                "nav-link-selected" : {"background-color" : "#262730"}
+            })
+        
+    if 'messages' not in st.session_state :
+        st.session_state.messages = []
+
+    if st.session_state["initial_login_state"] == True :
+        st.session_state["initial_login_state"] = False
+        Login_Page()
+        
+    if 'chat_session' not in st.session_state :
+        st.session_state.chat_session = None
+        
+    elif options == "Home" :
+        Home()
+    
+    elif options == "About Me" :
+        About_Me()
+    
+    elif options == "Model" :
+        Model()
 
 
 # Display login or home page based on login status
