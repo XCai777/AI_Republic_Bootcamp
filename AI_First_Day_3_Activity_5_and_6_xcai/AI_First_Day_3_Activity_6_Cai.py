@@ -93,7 +93,7 @@ def main_page():
         options = option_menu(
             "Dashboard", 
             ["Home", "About Me", "Model"],
-            icons = ['home', 'user', 'brain'],
+            icons = ['house', 'person-circle', 'chat'],
             menu_icon = "book", 
             default_index = 0,
             styles = {
