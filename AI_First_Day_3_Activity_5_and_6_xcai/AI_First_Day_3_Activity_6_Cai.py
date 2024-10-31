@@ -43,7 +43,8 @@ set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
 if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
     st.session_state["api_key"] = ""
-
+    initial_login_state = False
+    
 # Define a function to verify the API key
 def verify_api_key(api_key):
     try:
