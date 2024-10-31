@@ -107,7 +107,11 @@ def main_page():
     
     if 'chat_session' not in st.session_state :
         st.session_state.chat_session = None
-    
+        
+    if initial_login_state :
+        options == "Home"
+        initial_login_state = False
+        
     elif options == "Home" :
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((500, 500))
@@ -217,6 +221,7 @@ In summary, your feedback should be engaging, humorous, and clear while adhering
 # Display login or home page based on login status
 query_params = st.query_params  # Use st.query_params for retrieval
 if query_params.get("logged_in") == ["true"] or st.session_state["logged_in"]:
+    initial_login_state = True
     main_page()
 else:
     login()
