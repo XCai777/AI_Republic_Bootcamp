@@ -101,7 +101,7 @@ def main_page():
                 "nav-link" : {"font-size" : "17px", "text-align" : "left", "margin" : "5px", "--hover-color" : "#262730"},
                 "nav-link-selected" : {"background-color" : "#262730"}
             })
-    options = "Home";
+        
     if 'messages' not in st.session_state :
         st.session_state.messages = []
     
