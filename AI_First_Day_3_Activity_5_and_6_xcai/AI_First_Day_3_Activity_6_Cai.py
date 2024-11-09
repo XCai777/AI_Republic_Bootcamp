@@ -84,13 +84,13 @@ def login():
 def Home():
         st.title('WELCOME to Essay Grader by Doc. Bok!')
         st.write("## Click the following: ")
-        st.write("#Home")
+        st.write("## Doc. Bok:")
         st.write("Welcome to the Coop HQ! 🐔 Here’s where you’ll find all the juicy deets on this tool and how it clucks into action. Need help? Just peck around here to get a sense of all the features and how they’ll help crack your essay game wide open!")
-        st.write("#About Me:")
+        st.write("## Essay Grader: ")
+        st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")    
+        st.write("## About Me:")
         st.write("Ah, so you're curious about the chick behind the feathers, huh? Well, here you’ll find the scoop on yours truly. Consider this my digital nest – where you can get to know my background and why I’m fit to help with all things writing!")
-        st.write("#Model: ")
-        st.write("Welcome to Doc Bok’s Grading Nest! 🥚 Got an essay that needs a bit of polish, or some feedback that goes beyond the usual fluff? Type away, and I’ll give you feedback that’s sharper than a chicken’s beak but twice as friendly! Let’s hatch some improvements together, one draft at a time.")
-
+        
 def Doc_Bok():
        image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
        resized_image = image.resize((500, 500))
