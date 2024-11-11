@@ -24,14 +24,15 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Parcel Tracker by Doc. Bok", page_icon="🐔", layout="wide")
 
-dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv')
-dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
-documents = dataframed['combined'].tolist()
-embeddings = [get_embedding(doc, engine = 'text-embedding-3-small') for doc in documents]
-embedding_dim = len(embeddings[0])
-embeddings_np = np.array(embeddings).astype('float32')
-index = faiss.IndexFlatL2(embedding_dim)
-index.add(embeddings_np)
+def dataframe_processed():
+        dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv')
+        dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
+        documents = dataframed['combined'].tolist()
+        embeddings = [get_embedding(doc, engine = 'text-embedding-3-small') for doc in documents]
+        embedding_dim = len(embeddings[0])
+        embeddings_np = np.array(embeddings).astype('float32')
+        index = faiss.IndexFlatL2(embedding_dim)
+        index.add(embeddings_np)
         
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
@@ -256,6 +257,7 @@ Encouragement for Follow-up: End responses with an invitation to ask more questi
 "If you need anything else, feel free to ask!"
 "Let me know if you have more questions about your shipment!"
 """
+                    dataframe_processed()
                     user_message = user_query
                     query_embedding = get_embedding(user_message, engine='text-embedding-3-small')
                     query_embedding_np = np.array([query_embedding]).astype('float32')
