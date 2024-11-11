@@ -269,16 +269,6 @@ Encouragement for Follow-up: End responses with an invitation to ask more questi
                     response = chat.choices[0].message.content
                     struct.append({"role": "assistant", "content": response})
                     st.write("🐔 Doc. Bok:", response)
-
- def Data_Frame_Processed():
-        dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv')
-        dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
-        documents = dataframed['combined'].tolist()
-        embeddings = [get_embedding(doc, engine = 'text-embedding-3-small') for doc in documents]
-        embedding_dim = len(embeddings[0])
-        embeddings_np = np.array(embeddings).astype('float32')
-        index = faiss.IndexFlatL2(embedding_dim)
-        index.add(embeddings_np)
         
 # Home page content
 def main_page():
