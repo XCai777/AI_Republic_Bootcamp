@@ -22,7 +22,7 @@ import base64
 
 warnings.filterwarnings("ignore")
 
-st.set_page_config(page_title="Parcel Tracker by Doc. Bok", page_icon="🐔", layout="wide")
+st.set_page_config(page_title="Parcel Tracker by Truckkun", page_icon="🚚", layout="wide")
         
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
