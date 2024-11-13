@@ -231,7 +231,7 @@ def generate_delivery_status():
 def generate_expected_delivery_date():
     return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
 
-def delivery_form():
+def delivery():
     st.title("📦 Truck-kun's Delivery Service")
 
     st.subheader("Enter your parcel information below to get started with your delivery!")
@@ -372,7 +372,7 @@ def main_page():
         Parcel_Tracker()
         
     elif options == "Delivery" :
-        Delivery()
+        delivery()
            
     elif options == "Update Delivery Status" :
         update_delivery_status()
