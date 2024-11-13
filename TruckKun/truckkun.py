@@ -339,7 +339,7 @@ def main_page():
     
         options = option_menu(
             "Dashboard", 
-            ["Home", "Truck-Kun" , "Parcel Tracker", "About Me"],
+            ["Home", "Truck-Kun" , "Parcel Tracker", "Delivery", "Update Delivery Status", "About Me"],
             icons = ['house', 'egg', 'chat', 'person-circle'],
             menu_icon = "book", 
             default_index = 0,
@@ -373,7 +373,9 @@ def main_page():
         
     elif options == "Delivery" :
         Delivery()
-
+           
+    elif options == "Update Delivery Status" :
+        update_delivery_status()
 
 # Display login or home page based on login status
 query_params = st.query_params  # Use st.query_params for retrieval
