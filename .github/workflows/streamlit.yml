@@ -25,7 +25,7 @@ jobs:
       run: |
 
     - name: Run Python script
-      #env:
-        #STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
+      env:
+        STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
       run: |
-        python -c 'import os; print(os.environ['GIT_TOKEN'])'
+        python -c 'import os; print(os.environ.get('STREAM_LIT_TOKEN'))'
