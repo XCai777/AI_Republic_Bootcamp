@@ -19,6 +19,7 @@ import warnings
 from streamlit_option_menu import option_menu
 from streamlit_extras.mention import mention
 import base64
+import random
 
 warnings.filterwarnings("ignore")
 
