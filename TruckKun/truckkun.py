@@ -46,7 +46,7 @@ def set_background(image_path):
     """
     st.markdown(background_style, unsafe_allow_html=True)
 
-#set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
+set_background("TruckKun/images/background.png")
 
 if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
