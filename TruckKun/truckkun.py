@@ -234,7 +234,7 @@ def generate_expected_delivery_date():
     return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
 
 def delivery():
-    st.image("TruckKun/images/truckkundelivery.png", use_column_width=True)   
+    st.image("TruckKun/images/truckkundeliveries.png", use_column_width=False)   
     st.title("📦 Truck-kun's Delivery Service")
 
     st.subheader("Enter your parcel information below to get started with your delivery!")
@@ -301,7 +301,7 @@ def delivery():
 
  # Update delivery status function
 def update_delivery_status():
-    st.image("TruckKun/images/truckkunupdate.png", use_column_width=True)
+    st.image("TruckKun/images/truckkunupdate.png", use_column_width=False)
     st.title("🔄 Update Delivery Status")
 
     # Input field for Parcel ID to find the delivery record
