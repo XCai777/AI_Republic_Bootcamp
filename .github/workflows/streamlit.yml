@@ -27,4 +27,4 @@ jobs:
         STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
       run: |
         STREAM_LIT_TOKEN=${{ secrets.STREAM_LIT_TOKEN }}
-        python -c 'import os; print(os.environ['STREAM_LIT_TOKEN'])'
+        python -c 'import os; print(STREAM_LIT_TOKEN)'
