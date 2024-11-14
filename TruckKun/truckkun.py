@@ -227,7 +227,7 @@ def save_data(dataframed):
     
     # GitHub repository details
     url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
-    token = "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"
+    token = os.getenv('STREAMLIT_TOKEN')
     
     # Get the current SHA of the file to make an update
     try:
@@ -241,7 +241,7 @@ def save_data(dataframed):
     payload = {
         "message": "Update delivery status in CSV",
         "content": encoded_csv_data,  # encode content in base64
-        "sha": "c81261c589e5d5c7ca691517bfc21cbbdbaffad7"
+        "sha": file_sha
     }
     
     # Update the CSV file on GitHub
