@@ -42,6 +42,6 @@ jobs:
         
     - name: Run Python script
       env:
-        STREAMLIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}  # Referencing the secret
+        STREAM_LIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}  # Referencing the secret
       run: |
         python TruckKun/truckkun.py
