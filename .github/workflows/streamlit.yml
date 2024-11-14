@@ -22,4 +22,4 @@ jobs:
       env:
         STREAMLIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}  # Referencing the secret
       run: |
-        python script.py
+        python TruckKun/truckkun.py
