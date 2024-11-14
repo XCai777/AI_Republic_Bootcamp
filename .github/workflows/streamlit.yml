@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+env:
+  GIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}
+  
 jobs:
   run_python_script:
     runs-on: ubuntu-latest
@@ -23,8 +25,7 @@ jobs:
       run: |
 
     - name: Run Python script
-      env:
-        STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
+      #env:
+        #STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
       run: |
-        STREAM_LIT_TOKEN=${{ secrets.STREAM_LIT_TOKEN }}
-        python -c 'import os; print(STREAM_LIT_TOKEN)'
+        python -c 'import os; print(os.environ['GIT_TOKEN'])'
