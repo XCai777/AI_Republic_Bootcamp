@@ -223,10 +223,11 @@ def load_data():
 
 def save_data(dataframed):
     csv_data = dataframed.to_csv(index=False)
+    encoded_csv_data = base64.b64encode(csv_data.encode('utf-8')).decode('utf-8')
     
     # GitHub repository details
-    url = "https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv"
-    token = "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"
+    url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
+    token = "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"
     
     # Get the current SHA of the file to make an update
     try:
@@ -235,13 +236,11 @@ def save_data(dataframed):
         file_sha = response_json['sha']
     except Exception as e:
         print("Failed to retrieve file SHA:", e)
-        response_message = "Error updating CSV file on GitHub"
-        return response_message
 
     # Prepare payload with updated content
     payload = {
         "message": "Update delivery status in CSV",
-        "content": csv_data.encode("utf-8").decode("latin1"),  # encode content in base64
+        "content": encoded_csv_data,  # encode content in base64
         "sha": file_sha
     }
     
@@ -249,15 +248,11 @@ def save_data(dataframed):
     try:
         response = requests.put(url, headers={"Authorization": f"token {token}"}, data=json.dumps(payload))
         if response.status_code == 200:
-                   response_message="CSV file updated successfully on GitHub."
+            print("CSV file updated successfully on GitHub.")
         else:
-                   #print("Failed to update CSV file:", response.json())
-                   response_message="CSV file failed to update on GitHub."
-
+            print("Failed to update CSV file:", response.json())
     except Exception as e:
-        response_message = "Error updating CSV file on GitHub"
-
-    return response_message
+        print("Error updating CSV file on GitHub:", e)
     # Upload to the original URL if possible (e.g., through GitHub API or another storage system)
 
 # Function to auto-generate certain fields
