@@ -221,8 +221,8 @@ With Truck-kun, customers get bold, confident, and detail-packed responses about
 def load_data():
     return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
-def save_data(df):
-    csv_data = df.to_csv(index=False)
+def save_data(dataframed):
+    csv_data = dataframed.to_csv(index=False)
     
     # GitHub repository details
     url = "https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv"
@@ -326,12 +326,9 @@ def delivery():
             "Expected Delivery Date": expected_delivery_date
         }
 
-        # Load existing dataset
-        df = load_data()
-
         # Append the new entry and save
-        df = pd.concat([df, pd.DataFrame([new_entry])], ignore_index=True)
-        save_data(df)
+        dataframed = pd.concat([dataframed, pd.DataFrame([new_entry])], ignore_index=True)
+        save_data(dataframed)
 
         # Display the delivery info in a table format
         st.write(pd.DataFrame([new_entry]))
@@ -350,13 +347,11 @@ def update_delivery_status():
     parcel_id = st.text_input("Enter the Parcel ID to update the delivery status")
 
     if parcel_id:
-        # Load existing dataset
-        df = load_data()
 
         # Check if the Parcel ID exists in the dataset
-        if parcel_id in df['Parcel ID'].values:
+        if parcel_id in dataframed['Parcel ID'].values:
             # Display current status
-            current_status = df.loc[df['Parcel ID'] == parcel_id, 'Delivery Status'].values[0]
+            current_status = dataframed.loc[dataframed['Parcel ID'] == parcel_id, 'Delivery Status'].values[0]
             st.write(f"Current Status: {current_status}")
 
             # Status options for update
@@ -365,8 +360,8 @@ def update_delivery_status():
 
             if st.button("Update Status"):
                 # Update the status in the DataFrame
-                df.loc[df['Parcel ID'] == parcel_id, 'Delivery Status'] = new_status
-                save_data(df)
+                dataframed.loc[dataframed['Parcel ID'] == parcel_id, 'Delivery Status'] = new_status
+                save_data(dataframed)
                    
                 st.success(f"Delivery status for Parcel ID {parcel_id} updated to '{new_status}'")
         else:
