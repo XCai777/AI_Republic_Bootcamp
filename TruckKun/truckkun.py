@@ -21,6 +21,8 @@ from streamlit_extras.mention import mention
 import base64
 import random
 import datetime
+import requests
+import json
 
 warnings.filterwarnings("ignore")
 
@@ -220,7 +222,37 @@ def load_data():
     return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
 def save_data(df):
-    df.to_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv', index=False)
+    csv_data = df.to_csv(index=False)
+    
+    # GitHub repository details
+    url = "https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv"
+    token = "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"
+    
+    # Get the current SHA of the file to make an update
+    try:
+        response = requests.get(url, headers={"Authorization": f"token {token}"})
+        response_json = response.json()
+        file_sha = response_json['sha']
+    except Exception as e:
+        print("Failed to retrieve file SHA:", e)
+        return
+
+    # Prepare payload with updated content
+    payload = {
+        "message": "Update delivery status in CSV",
+        "content": csv_data.encode("utf-8").decode("latin1"),  # encode content in base64
+        "sha": file_sha
+    }
+    
+    # Update the CSV file on GitHub
+    try:
+        response = requests.put(url, headers={"Authorization": f"token {token}"}, data=json.dumps(payload))
+        if response.status_code == 200:
+            print("CSV file updated successfully on GitHub.")
+        else:
+            print("Failed to update CSV file:", response.json())
+    except Exception as e:
+        print("Error updating CSV file on GitHub:", e)
     # Upload to the original URL if possible (e.g., through GitHub API or another storage system)
 
 # Function to auto-generate certain fields
