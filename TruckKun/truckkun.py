@@ -220,7 +220,7 @@ def load_data():
     return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
 def save_data(df):
-    df.to_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv', index=False)
+    df.to_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv', index=False)
     # Upload to the original URL if possible (e.g., through GitHub API or another storage system)
 
 # Function to auto-generate certain fields
