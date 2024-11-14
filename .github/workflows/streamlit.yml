@@ -32,6 +32,7 @@ jobs:
         pip install streamlit-option-menu
         pip install streamlit-extras
         pip install requests
+        pip install scipy
         
     - name: Run Python script
       env:
