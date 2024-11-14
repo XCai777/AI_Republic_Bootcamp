@@ -18,6 +18,14 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Install dependencies
+      run: |
+        pip install openai==0.28.1
+        pip install tiktoken==0.6.0
+        pip install langchain==0.1.20
+        pip install chromadb==0.5.0
+        pip install faiss-cpu
+        
     - name: Run Python script
       env:
         STREAMLIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}  # Referencing the secret
