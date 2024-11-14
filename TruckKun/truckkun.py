@@ -222,6 +222,7 @@ def load_data():
     return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
 def save_data(dataframed):
+    global dataframed
     csv_data = dataframed.to_csv(index=False)
     encoded_csv_data = base64.b64encode(csv_data.encode('utf-8')).decode('utf-8')
     
