@@ -227,7 +227,7 @@ def save_data(dataframed):
     
     # GitHub repository details
     url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
-    token = os.environ['STREAM_LIT_TOKEN']
+    token = os.getenv('STREAM_LIT_TOKEN')
     
     # Get the current SHA of the file to make an update
     try:
