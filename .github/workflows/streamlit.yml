@@ -25,6 +25,7 @@ jobs:
         pip install langchain==0.1.20
         pip install chromadb==0.5.0
         pip install faiss-cpu
+        pip install pandas
         
     - name: Run Python script
       env:
