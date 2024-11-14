@@ -250,7 +250,7 @@ def save_data(df):
         response = requests.put(url, headers={"Authorization": f"token {token}"}, data=json.dumps(payload))
         if response.status_code == 200:
                    response_message="CSV file updated successfully on GitHub."
-                else:
+        else:
                    #print("Failed to update CSV file:", response.json())
                    response_message="CSV file failed to update on GitHub."
 
