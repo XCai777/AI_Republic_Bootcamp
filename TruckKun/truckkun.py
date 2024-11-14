@@ -235,7 +235,8 @@ def save_data(df):
         file_sha = response_json['sha']
     except Exception as e:
         print("Failed to retrieve file SHA:", e)
-        return
+        response = "Error updating CSV file on GitHub"
+        return response
 
     # Prepare payload with updated content
     payload = {
