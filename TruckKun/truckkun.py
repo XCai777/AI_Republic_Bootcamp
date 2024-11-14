@@ -290,7 +290,7 @@ def delivery():
         df = load_data()
 
         # Append the new entry and save
-        df = df.append(new_entry, ignore_index=True)
+        df = pd.concat([df, pd.DataFrame([new_entry])], ignore_index=True)
         save_data(df)
 
         # Display the delivery info in a table format
