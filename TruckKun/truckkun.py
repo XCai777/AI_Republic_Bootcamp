@@ -24,7 +24,7 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="🚚", layout="wide")
 
-dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv')
+dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
        
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
@@ -215,7 +215,7 @@ With Truck-kun, customers get bold, confident, and detail-packed responses about
                     st.write("🚚 Truck-Kun:", response)
 
 def load_data():
-    return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv')
+    return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
 def save_data(df):
     df.to_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Day_4_AI_First_Dataset_Live/Parcel_XCai.csv', index=False)
