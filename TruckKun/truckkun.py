@@ -237,7 +237,7 @@ def delivery():
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2 :
            st.image("TruckKun/images/truckkundeliveries.png", use_column_width=False)   
-           st.title("📦 Truck-kun's Delivery Service")
+    st.title("📦 Truck-kun's Delivery Service")
 
     st.subheader("Enter your parcel information below to get started with your delivery!")
 
@@ -304,7 +304,7 @@ def delivery():
  # Update delivery status function
 def update_delivery_status():
 
-    col1, col2, col3 = st.columns([1, 1, 1])
+    col1, col2, col3 = st.columns([1, 2, 1])
     with col2 :
            st.image("TruckKun/images/truckkunupdate.png", use_column_width=False)
            st.title("🔄 Update Delivery Status")
