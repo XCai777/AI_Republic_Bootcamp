@@ -18,10 +18,6 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requests
-
     - name: Run Python script
       env:
         STREAMLIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}  # Referencing the secret
