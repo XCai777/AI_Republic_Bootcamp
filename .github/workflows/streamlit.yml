@@ -25,7 +25,13 @@ jobs:
         pip install langchain==0.1.20
         pip install chromadb==0.5.0
         pip install faiss-cpu
-        pip install pandas
+        pip install pandasopenai
+        pip install numpy
+        pip install Pillow
+        pip install streamlit
+        pip install streamlit-option-menu
+        pip install streamlit-extras
+        pip install requests
         
     - name: Run Python script
       env:
