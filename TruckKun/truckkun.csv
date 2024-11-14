@@ -19,3 +19,4 @@ P774210,Jason Adams,"568 Sender St, City 5",Wanda Maximoff,"334 Recipient Ave, C
 P902536,Natalie Rose,"294 Sender Rd, City 13",Tony Stark,"788 Recipient Ln, City 17",Up to 1kg,Medium (50cm x 50cm),Standard,Box,Yes,No,In Transit,2024-11-21,TRK10018,2024-11-10,2024-11-18,$18.00,Paid,Brian White
 P315560,James Black,"189 Sender St, City 8",Tony Stark,"1023 Recipient Blvd, City 6",5kg - 10kg,Medium (50cm x 50cm),Express,Envelope,No,Yes,Cancelled,2024-11-16,TRK10019,2024-11-08,2024-11-16,$20.00,Pending,Kevin Scott
 P725060,Jessica King,"734 Sender Rd, City 20",Peter Parker,"821 Recipient St, City 5",Over 10kg,Large (100cm x 100cm),Overnight,Box,Yes,No,Out for Delivery,2024-11-14,TRK10020,2024-11-10,2024-11-13,$40.00,Paid,John White
+P028423,John,sender_address,recipient_name,recipient_address,weight,dimensions,shipping_method,parcel_type,insurance,signature_required,delivery_status,expected_delivery_date,,,,,,
