@@ -20,28 +20,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install openai==0.28.1
-        pip install tiktoken==0.6.0
-        pip install langchain==0.1.20
-        pip install chromadb==0.5.0
-        pip install faiss-cpu
-        pip install pandas
-        pip install numpy
-        pip install Pillow
-        pip install streamlit
-        pip install streamlit-option-menu
-        pip install streamlit-extras
-        pip install requests
-        pip install scipy
-        pip install scikit-learn
-        pip install python-dotenv
-        pip install pytest
-        pip install flask
-        pip install tensorflow
-        pip install matplotlib
+
         
     - name: Run Python script
       env:
         STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
       run: |
-        print(os.environ['STREAM_LIT_TOKEN'])
+        python -c 'import os; print(os.environ['STREAM_LIT_TOKEN'])'
