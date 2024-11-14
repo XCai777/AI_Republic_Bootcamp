@@ -250,6 +250,8 @@ def save_data(df):
 
     except Exception as e:
         response = "Error updating CSV file on GitHub"
+
+    return response
     # Upload to the original URL if possible (e.g., through GitHub API or another storage system)
 
 # Function to auto-generate certain fields
