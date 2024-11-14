@@ -44,4 +44,4 @@ jobs:
       env:
         STREAM_LIT_TOKEN: ${{ secrets.STREAM_LIT_TOKEN }}  # Referencing the secret
       run: |
-        python TruckKun/truckkun.py
+        print(STREAM_LIT_TOKEN)
