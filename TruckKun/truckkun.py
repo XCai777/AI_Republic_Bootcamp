@@ -227,9 +227,8 @@ def save_data(dataframed):
     
     # GitHub repository details
     url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
-    #token = os.environ["GIT_TOKEN"]
-    token = os.getenv("GIT_TOKEN")   
-    print(token)
+    token = os.environ["GIT_TOKEN"]
+    #token = os.getenv("GIT_TOKEN")   
     # Get the current SHA of the file to make an update
     try:
         response = requests.get(url, headers={"Authorization": f"token {token}"})
