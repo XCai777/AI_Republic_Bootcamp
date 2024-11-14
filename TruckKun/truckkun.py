@@ -247,12 +247,9 @@ def save_data(df):
     # Update the CSV file on GitHub
     try:
         response = requests.put(url, headers={"Authorization": f"token {token}"}, data=json.dumps(payload))
-        if response.status_code == 200:
-            print("CSV file updated successfully on GitHub.")
-        else:
-            print("Failed to update CSV file:", response.json())
+
     except Exception as e:
-        print("Error updating CSV file on GitHub:", e)
+        response = "Error updating CSV file on GitHub"
     # Upload to the original URL if possible (e.g., through GitHub API or another storage system)
 
 # Function to auto-generate certain fields
@@ -362,7 +359,11 @@ def update_delivery_status():
                 # Update the status in the DataFrame
                 df.loc[df['Parcel ID'] == parcel_id, 'Delivery Status'] = new_status
                 save_data(df)
-                
+                if response.status_code == 200:
+                   print("CSV file updated successfully on GitHub.")
+                else:
+                   print("Failed to update CSV file:", response.json())
+                       
                 st.success(f"Delivery status for Parcel ID {parcel_id} updated to '{new_status}'")
         else:
             st.error("Parcel ID not found in the dataset.")
