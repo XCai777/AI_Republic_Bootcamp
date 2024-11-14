@@ -44,7 +44,7 @@ def set_background(image_path):
     """
     st.markdown(background_style, unsafe_allow_html=True)
 
-set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
+#set_background("AI_First_Day_3_Activity_5_and_6_xcai/images/background.jpg")
 
 if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
@@ -70,7 +70,7 @@ def verify_api_key(api_key):
 def login():
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2 :
-        st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokEyeglass.png", use_column_width=True)
+        st.image("TruckKun/images/truckkunhomepage.png", use_column_width=True)
         st.title("Login with OpenAI API Key")
     api_key = st.text_input("Enter your OpenAI API Key", type="password")
     
@@ -102,7 +102,7 @@ def Home():
         st.write("Wanna know the mastermind behind Truck-kun? Right here is where you can learn all about my creator, the brilliant brain who built and tuned me up to be the ultimate delivery machine. They’re the one who put the smarts in my engine and the charm in my character, so if you’re curious about my origin story, the About Me tab’s got it all.")
 
 def Truck_Kun():
-       image = Image.open("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokDP.jpg")
+       image = Image.open("TruckKun/images/truckkunhomepage.png")
        resized_image = image.resize((500, 500))
        col01, col02, col03= st.columns([1,2,1])
        with col02 :
@@ -140,7 +140,7 @@ def About_Me():
 def Parcel_Tracker():
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2 :
-            st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBokReading.png")
+            st.image("TruckKun/images/truckkunchat.png")
 
         col11, col21, col31 = st.columns([4, 5, 3])
         with col21 :
@@ -234,6 +234,7 @@ def generate_expected_delivery_date():
     return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
 
 def delivery():
+    st.image("TruckKun/images/truckkundelivery.png", use_column_width=True)   
     st.title("📦 Truck-kun's Delivery Service")
 
     st.subheader("Enter your parcel information below to get started with your delivery!")
@@ -300,6 +301,7 @@ def delivery():
 
  # Update delivery status function
 def update_delivery_status():
+    st.image("TruckKun/images/truckkunupdate.png", use_column_width=True)
     st.title("🔄 Update Delivery Status")
 
     # Input field for Parcel ID to find the delivery record
@@ -331,7 +333,7 @@ def update_delivery_status():
 # Home page content
 def main_page():
     with st.sidebar :
-        st.image("AI_First_Day_3_Activity_5_and_6_xcai/images/DocBok.png", use_column_width=True)
+        st.image("TruckKun/images/truckkunlogo.png", use_column_width=True)
         
         with st.container() :
             l, m, r = st.columns((1, 3, 1))
