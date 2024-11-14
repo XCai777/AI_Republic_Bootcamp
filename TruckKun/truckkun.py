@@ -28,7 +28,6 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="🚚", layout="wide")
 
-global dataframed 
 dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
        
 def set_background(image_path):
@@ -326,6 +325,7 @@ def delivery():
             "Delivery Status": delivery_status,
             "Expected Delivery Date": expected_delivery_date
         }
+        global dataframed
 
         # Append the new entry and save
         dataframed = pd.concat([dataframed, pd.DataFrame([new_entry])], ignore_index=True)
@@ -348,6 +348,7 @@ def update_delivery_status():
     parcel_id = st.text_input("Enter the Parcel ID to update the delivery status")
 
     if parcel_id:
+        global dataframed
 
         # Check if the Parcel ID exists in the dataset
         if parcel_id in dataframed['Parcel ID'].values:
