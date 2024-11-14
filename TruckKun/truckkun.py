@@ -241,7 +241,7 @@ def save_data(dataframed):
     payload = {
         "message": "Update delivery status in CSV",
         "content": encoded_csv_data,  # encode content in base64
-        "sha": file_sha
+        "sha": "c81261c589e5d5c7ca691517bfc21cbbdbaffad7"
     }
     
     # Update the CSV file on GitHub
