@@ -25,7 +25,7 @@ jobs:
         pip install langchain==0.1.20
         pip install chromadb==0.5.0
         pip install faiss-cpu
-        pip install pandasopenai
+        pip install pandas
         pip install numpy
         pip install Pillow
         pip install streamlit
