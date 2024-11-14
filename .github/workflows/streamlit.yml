@@ -33,6 +33,12 @@ jobs:
         pip install streamlit-extras
         pip install requests
         pip install scipy
+        pip install scikit-learn
+        pip install python-dotenv
+        pip install pytest
+        pip install flask
+        pip install tensorflow
+        pip install matplotlib
         
     - name: Run Python script
       env:
