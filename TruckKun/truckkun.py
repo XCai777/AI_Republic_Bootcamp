@@ -222,13 +222,12 @@ def load_data():
     return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
 def save_data(dataframed):
-    global dataframed
     csv_data = dataframed.to_csv(index=False)
     encoded_csv_data = base64.b64encode(csv_data.encode('utf-8')).decode('utf-8')
     
     # GitHub repository details
     url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
-    token = "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"
+    token = "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"
     
     # Get the current SHA of the file to make an update
     try:
