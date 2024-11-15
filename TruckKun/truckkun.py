@@ -28,6 +28,7 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="🚚", layout="wide")
 
+@st.cache_data(ttl=60)
 def load_data():
     try:
         return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
