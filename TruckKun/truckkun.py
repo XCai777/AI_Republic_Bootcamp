@@ -277,7 +277,11 @@ def calculate_delivery_fees(weight, dimensions):
         "Medium (50cm x 50cm)": 10,
         "Large (100cm x 100cm)": 15
     }
-    return weight_fee.get(weight, 0) + dimension_fee.get(dimensions, 0)
+    # Calculate the total fee
+    total_fee = weight_fee.get(weight, 0) + dimension_fee.get(dimensions, 0)
+    
+    # Format as dollar currency
+    return f"${total_fee:.2f}"
 
 def delivery():
     col1, col2, col3 = st.columns([1, 1, 1])
