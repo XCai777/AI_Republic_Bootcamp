@@ -200,7 +200,7 @@ With Truck-kun, customers get bold, confident, and detail-packed responses about
 """
                     # Load existing dataset
                     dataframed = pd.DataFrame()
-                    dataframed = load_data()
+                    dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
                     dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
                     documents = dataframed['combined'].tolist()
                     embeddings = [get_embedding(doc, engine = 'text-embedding-3-small') for doc in documents]
@@ -365,7 +365,7 @@ def delivery():
         
         # Load existing dataset
         dataframed = pd.DataFrame()
-        dataframed = load_data()
+        dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
            
         # Append the new entry and save
         dataframed = pd.concat([dataframed, pd.DataFrame([new_entry])], ignore_index=True)
@@ -390,7 +390,7 @@ def update_delivery_status():
     if parcel_id:
         # Load existing dataset
         dataframed = pd.DataFrame()
-        dataframed = load_data()
+        dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
         # Check if the Parcel ID exists in the dataset
         if parcel_id in dataframed['Parcel ID'].values:
             # Display current status
