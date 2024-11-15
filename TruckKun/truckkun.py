@@ -322,8 +322,6 @@ def delivery():
             "Delivery Status": delivery_status,
             "Expected Delivery Date": expected_delivery_date
         }
-        global dataframed
-
         # Append the new entry and save
         dataframed = pd.concat([dataframed, pd.DataFrame([new_entry])], ignore_index=True)
         save_data(dataframed)
@@ -346,8 +344,6 @@ def update_delivery_status():
     parcel_id = st.text_input("Enter the Parcel ID to update the delivery status")
 
     if parcel_id:
-        global dataframed
-
         # Check if the Parcel ID exists in the dataset
         if parcel_id in dataframed['Parcel ID'].values:
             # Display current status
