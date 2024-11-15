@@ -21,3 +21,4 @@ P315560,James Black,"189 Sender St, City 8",Tony Stark,"1023 Recipient Blvd, Cit
 P725060,Jessica King,"734 Sender Rd, City 20",Peter Parker,"821 Recipient St, City 5",Over 10kg,Large (100cm x 100cm),Overnight,Box,Yes,No,Out for Delivery,2024-11-14,TRK10020,2024-11-10,2024-11-13,$40.00,Paid,John White
 P028423,John,sender_address,recipient_name,recipient_address,weight,dimensions,shipping_method,parcel_type,insurance,signature_required,delivery_status,expected_delivery_date,,,,,,
 P695867,Mark Carlos,123 Something St. Something City,John Cruz,423 Somewhere St. Something City,1kg - 5kg,Small (30cm x 30cm),Standard,Document,Yes,Yes,Pending,2024-11-19,,,,,,
+P782359,Von Ayads,123 Something St. Something City,Mike Bambroz,423 Somewhere St. Something City,Up to 1kg,Small (30cm x 30cm),Standard,Document,Yes,Yes,Pending,2024-11-22,,,,,,
