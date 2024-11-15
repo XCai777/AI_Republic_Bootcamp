@@ -29,7 +29,11 @@ warnings.filterwarnings("ignore")
 st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="🚚", layout="wide")
 
 def load_data():
-    return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+    try:
+        return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+    except Exception as e:
+        st.error(f"Failed to load data: {e}")
+        return pd.DataFrame()
        
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
@@ -199,8 +203,8 @@ Response: "Oh, you know it! Parcel ID #24680 was signed for by a trusted recipie
 With Truck-kun, customers get bold, confident, and detail-packed responses about their deliveries, reassuring them every step of the way.
 """
                     # Load existing dataset
-                    dataframed = pd.DataFrame()
-                    dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+                    dataframed = load_data()
+                    
                     dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
                     documents = dataframed['combined'].tolist()
                     embeddings = [get_embedding(doc, engine = 'text-embedding-3-small') for doc in documents]
@@ -364,8 +368,7 @@ def delivery():
         }
         
         # Load existing dataset
-        dataframed = pd.DataFrame()
-        dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+        dataframed = load_data()
            
         # Append the new entry and save
         dataframed = pd.concat([dataframed, pd.DataFrame([new_entry])], ignore_index=True)
@@ -389,8 +392,8 @@ def update_delivery_status():
 
     if parcel_id:
         # Load existing dataset
-        dataframed = pd.DataFrame()
-        dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+        dataframed = load_data()
+        
         # Check if the Parcel ID exists in the dataset
         if parcel_id in dataframed['Parcel ID'].values:
             # Display current status
