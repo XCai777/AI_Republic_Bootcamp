@@ -428,7 +428,7 @@ def main_page():
         options = option_menu(
             "Dashboard", 
             ["Home", "Truck-Kun" , "Parcel Tracker", "Delivery", "Update Delivery Status", "About Me"],
-            icons = ['house', 'truck', 'chat', 'info', 'map', 'person-circle'],
+            icons = ['house', 'truck', 'chat', 'sticky-note', 'map', 'person-circle'],
             menu_icon = "book", 
             default_index = 0,
             styles = {
