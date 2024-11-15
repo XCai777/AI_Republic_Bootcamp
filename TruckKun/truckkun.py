@@ -263,7 +263,7 @@ def generate_delivery_status():
     return "Pending"
 
 def generate_expected_delivery_date():
-    return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
+    return datetime.now().date() + timedelta(days=random.randint(2, 8))
 
 def calculate_delivery_fees(weight, dimensions):
     weight_fee = {
