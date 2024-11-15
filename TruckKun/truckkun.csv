@@ -1,5 +1,5 @@
 Parcel ID,Sender Name,Sender Address,Recipient Name,Recipient Address,Weight,Dimensions,Shipping Method,Parcel Type,Insurance,Signature Required,Delivery Status,Expected Delivery Date,Tracking Number,Shipment Date,Delivery Date,Delivery Fees,Payment Status,Courier Name
-P605730,John Doe,"123 Sender St, City 5",Jane Smith,"456 Recipient Rd, City 10",5kg - 10kg,Small (30cm x 30cm),Express,Document,Yes,Yes,In Transit,2024-11-15,TRK10001,2024-11-12,2024-11-14,$15.00,Paid,Mike Johnson
+P605730,John Doe,"123 Sender St, City 5",Jane Smith,"456 Recipient Rd, City 10",5kg - 10kg,Small (30cm x 30cm),Express,Document,Yes,Yes,Out for Delivery,2024-11-15,TRK10001,2024-11-12,2024-11-14,$15.00,Paid,Mike Johnson
 P812503,Sarah Lee,"98 Sender Ave, City 3",Bob Marley,"765 Recipient Blvd, City 6",Over 10kg,Medium (50cm x 50cm),Standard,Box,Yes,No,Cancelled,2024-11-16,TRK10002,2024-11-09,2024-11-16,$25.00,Paid,Lucy Walker
 P350514,Mary Green,"231 Sender Rd, City 8",Tom Hardy,"1032 Recipient Ln, City 4",1kg - 5kg,Large (100cm x 100cm),Overnight,Envelope,No,Yes,Delivered,2024-11-18,TRK10003,2024-11-11,2024-11-18,$30.00,Pending,Jack Hughes
 P821742,Alex Turner,"890 Sender St, City 4",Emily Davis,"228 Recipient Blvd, City 7",5kg - 10kg,Medium (50cm x 50cm),Express,Pallet,Yes,No,Out for Delivery,2024-11-14,TRK10004,2024-11-13,2024-11-14,$40.00,Paid,Fiona White
