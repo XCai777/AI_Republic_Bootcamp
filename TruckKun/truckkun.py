@@ -266,8 +266,6 @@ def generate_expected_delivery_date():
     return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
 
 def delivery():
-    # Load existing dataset
-    dataframed = load_data()
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2 :
            st.image("TruckKun/images/truckkundeliveries.png", use_column_width=False)   
@@ -322,6 +320,10 @@ def delivery():
             "Delivery Status": delivery_status,
             "Expected Delivery Date": expected_delivery_date
         }
+        
+        # Load existing dataset
+        dataframed = load_data()
+           
         # Append the new entry and save
         dataframed = pd.concat([dataframed, pd.DataFrame([new_entry])], ignore_index=True)
         save_data(dataframed)
@@ -333,8 +335,7 @@ def delivery():
 
  # Update delivery status function
 def update_delivery_status():
-    # Load existing dataset
-    dataframed = load_data()
+
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2 :
            st.image("TruckKun/images/truckkunupdate.png", use_column_width=False)
@@ -344,6 +345,8 @@ def update_delivery_status():
     parcel_id = st.text_input("Enter the Parcel ID to update the delivery status")
 
     if parcel_id:
+        # Load existing dataset
+        dataframed = load_data()
         # Check if the Parcel ID exists in the dataset
         if parcel_id in dataframed['Parcel ID'].values:
             # Display current status
