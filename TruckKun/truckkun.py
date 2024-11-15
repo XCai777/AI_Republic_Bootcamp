@@ -28,7 +28,8 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="🚚", layout="wide")
 
-dataframed = pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+def load_data():
+       return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
        
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
@@ -197,6 +198,8 @@ Customer Inquiry: "Has my package been signed for yet?"
 Response: "Oh, you know it! Parcel ID #24680 was signed for by a trusted recipient just this afternoon. Safe and sound, just like Truck-kun promised! Anything else you need? I’m always ready to help!"
 With Truck-kun, customers get bold, confident, and detail-packed responses about their deliveries, reassuring them every step of the way.
 """
+                    # Load existing dataset
+                    dataframed = load_data()
                     dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
                     documents = dataframed['combined'].tolist()
                     embeddings = [get_embedding(doc, engine = 'text-embedding-3-small') for doc in documents]
@@ -217,9 +220,6 @@ With Truck-kun, customers get bold, confident, and detail-packed responses about
                     response = chat.choices[0].message.content
                     struct.append({"role": "assistant", "content": response})
                     st.write("🚚 Truck-Kun:", response)
-
-def load_data():
-    return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
 
 def save_data(dataframed):
     csv_data = dataframed.to_csv(index=False)
@@ -266,6 +266,8 @@ def generate_expected_delivery_date():
     return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
 
 def delivery():
+    # Load existing dataset
+    dataframed = load_data()
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2 :
            st.image("TruckKun/images/truckkundeliveries.png", use_column_width=False)   
@@ -333,7 +335,8 @@ def delivery():
 
  # Update delivery status function
 def update_delivery_status():
-
+    # Load existing dataset
+    dataframed = load_data()
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2 :
            st.image("TruckKun/images/truckkunupdate.png", use_column_width=False)
