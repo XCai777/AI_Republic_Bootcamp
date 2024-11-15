@@ -199,6 +199,7 @@ Response: "Oh, you know it! Parcel ID #24680 was signed for by a trusted recipie
 With Truck-kun, customers get bold, confident, and detail-packed responses about their deliveries, reassuring them every step of the way.
 """
                     # Load existing dataset
+                    dataframed = pd.DataFrame()
                     dataframed = load_data()
                     dataframed['combined'] = dataframed.apply(lambda row: ' '.join(row.values.astype(str)), axis=1)       
                     documents = dataframed['combined'].tolist()
@@ -363,6 +364,7 @@ def delivery():
         }
         
         # Load existing dataset
+        dataframed = pd.DataFrame()
         dataframed = load_data()
            
         # Append the new entry and save
@@ -387,6 +389,7 @@ def update_delivery_status():
 
     if parcel_id:
         # Load existing dataset
+        dataframed = pd.DataFrame()
         dataframed = load_data()
         # Check if the Parcel ID exists in the dataset
         if parcel_id in dataframed['Parcel ID'].values:
