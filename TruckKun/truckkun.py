@@ -29,7 +29,7 @@ warnings.filterwarnings("ignore")
 st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="🚚", layout="wide")
 
 def load_data():
-       return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+    return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
        
 def set_background(image_path):
     with open(image_path, "rb") as image_file:
@@ -265,6 +265,20 @@ def generate_delivery_status():
 def generate_expected_delivery_date():
     return datetime.date.today() + datetime.timedelta(days=random.randint(1, 7))
 
+def calculate_delivery_fees(weight, dimensions):
+    weight_fee = {
+        "Up to 1kg": 5,
+        "1kg - 5kg": 10,
+        "5kg - 10kg": 15,
+        "Over 10kg": 20
+    }
+    dimension_fee = {
+        "Small (30cm x 30cm)": 5,
+        "Medium (50cm x 50cm)": 10,
+        "Large (100cm x 100cm)": 15
+    }
+    return weight_fee.get(weight, 0) + dimension_fee.get(dimensions, 0)
+
 def delivery():
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2 :
@@ -276,36 +290,54 @@ def delivery():
     # User inputs for sender information
     sender_name = st.text_input("Sender Name")
     sender_address = st.text_input("Sender Address")
-    
+
     # Recipient information
     recipient_name = st.text_input("Recipient Name")
     recipient_address = st.text_input("Recipient Address")
-    
+
     # Parcel Specifications
     weight_options = ["Up to 1kg", "1kg - 5kg", "5kg - 10kg", "Over 10kg"]
     weight = st.selectbox("Weight of Parcel", weight_options)
-    
+
     dimension_options = ["Small (30cm x 30cm)", "Medium (50cm x 50cm)", "Large (100cm x 100cm)"]
     dimensions = st.selectbox("Dimensions of Parcel", dimension_options)
-    
+
     # Shipping Details
     shipping_method = st.radio("Shipping Method", ["Standard", "Express", "Overnight"])
     parcel_type = st.selectbox("Parcel Type", ["Document", "Box", "Envelope", "Pallet"])
     insurance = st.selectbox("Insurance", ["Yes", "No"])
     signature_required = st.selectbox("Signature Required", ["Yes", "No"])
+    payment_status = st.selectbox("Payment Status", ["Paid", "Unpaid"])
 
-    # Generate auto-filled fields
+    # Auto-filled fields
     parcel_id = generate_parcel_id()
     delivery_status = generate_delivery_status()
     expected_delivery_date = generate_expected_delivery_date()
+
+    # Generate Tracking Number
+    tracking_number = f"TRK{random.randint(10000, 99999)}"
+
+    # Generate Shipment Date
+    shipment_date = datetime.now().date()
+    
+    # Set Delivery Date only if status is "Delivered"
+    delivery_date = shipment_date + timedelta(days=random.randint(5, 8)) if delivery_status == "Delivered" else None
+
+    # Calculate Delivery Fees based on weight and dimensions
+    delivery_fees = calculate_delivery_fees(weight, dimensions)
+
+    # Select random Courier Name from dataset
+    dataframed = load_data()
+    courier_name = random.choice(dataframed['Courier Name'].dropna().unique())
 
     # Submit button and display results
     if st.button("Submit Delivery"):
         # Display the information entered
         st.subheader("Here's the info Truck-kun's gathered for your delivery:")
-        
+
         # Prepare the new entry data
         new_entry = {
+            "Tracking Number": tracking_number,
             "Parcel ID": parcel_id,
             "Sender Name": sender_name,
             "Sender Address": sender_address,
@@ -318,6 +350,11 @@ def delivery():
             "Insurance": insurance,
             "Signature Required": signature_required,
             "Delivery Status": delivery_status,
+            "Shipment Date": shipment_date,
+            "Delivery Date": delivery_date,
+            "Delivery Fees": delivery_fees,
+            "Payment Status": payment_status,
+            "Courier Name": courier_name,
             "Expected Delivery Date": expected_delivery_date
         }
         
