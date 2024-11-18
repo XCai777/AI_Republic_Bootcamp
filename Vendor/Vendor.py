@@ -99,6 +99,7 @@ def pricing_page():
 
             # Parse response content safely
             raw_content = response["choices"][0]["message"]["content"]
+            st.write("Raw AI Response:", raw_content)
             try:
                 # Ensure the output is valid JSON
                 suggestions = json.loads(raw_content)
