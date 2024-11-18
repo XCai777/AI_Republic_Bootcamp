@@ -173,11 +173,13 @@ def edit_prices_page():
             user_data["Optimized Price"] = new_prices
             st.success("Prices updated successfully!")
             st.write(user_data)
-
-            # Optionally, save the updated dataset to a new file
-            save_data(user_data)
             global new_user_data
             new_user_data = user_data
+            st.write(new_user_data)
+            
+            # Optionally, save the updated dataset to a new file
+            save_data(user_data)
+
         except Exception as e:
             st.error(f"Error saving updated prices: {e}")
 
