@@ -101,19 +101,6 @@ def pricing_page():
             raw_content_message = raw_response["choices"][0]["message"]["content"]
             st.write("Raw AI Response:", raw_content_message)
 
-
-Here’s how you can create another menu where the user can manually input new prices for their dataset and save the updated data to a new column called Optimized Price.
-
-Code for the New Menu
-Add a new menu item called "Edit Prices". This section will:
-
-Display the user’s dataset.
-Allow the user to input new prices manually.
-Save the new prices to a column called Optimized Price.
-Here’s the function for the Edit Prices menu:
-
-python
-Copy code
 def edit_prices_page():
     st.title("Edit Prices")
     user_data = load_user_data(st.session_state["user"]["data_file"])
