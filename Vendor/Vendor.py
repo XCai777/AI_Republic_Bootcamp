@@ -27,6 +27,7 @@ import json
 
 # Mock user database
 USER_DB = "https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Vendor/Data/USER.csv"  # A CSV file with columns: username, password, data_file
+new_user_data = pd.DataFrame()
 
 # App title
 st.set_page_config(page_title="Dynamic Pricing App", layout="wide")
@@ -175,28 +176,31 @@ def edit_prices_page():
 
             # Optionally, save the updated dataset to a new file
             save_data(user_data)
+            global new_user_data
+            new_user_data = user_data
         except Exception as e:
             st.error(f"Error saving updated prices: {e}")
 
 
 def income_projection_page():
     st.title("Income Projection")
-    user_data = load_user_data(st.session_state["user"]["data_file"])
+    #user_data = load_user_data(st.session_state["user"]["data_file"])
+    global new_user_data
     
-    if user_data.empty:
+    if new_user_data.empty:
         st.warning("No data available for this user.")
         return
 
     st.subheader("Revenue Projection")
-    if "Optimized Price" not in user_data:
+    if "Optimized Price" not in new_user_data:
         st.warning("Please generate optimized prices first.")
         return
 
-    user_data["Projected Revenue"] = user_data["Optimized Price"] * user_data["Demand"]
-    st.write(user_data)
+    new_user_data["Projected Revenue"] = new_user_data["Optimized Price"] * new_user_data["Demand"]
+    st.write(new_user_data)
 
     # Visualization
-    st.line_chart(user_data[["Demand", "Projected Revenue"]])
+    st.line_chart(new_user_data[["Demand", "Projected Revenue"]])
 
 def about_me_page():
     st.title("About Me")
