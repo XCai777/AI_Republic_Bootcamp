@@ -89,7 +89,7 @@ def pricing_page():
     if st.button("Get Pricing Recommendations"):
         try:
             # Call OpenAI API
-            response = openai.ChatCompletion.create(
+            raw_response = openai.ChatCompletion.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are a pricing optimization AI."},
@@ -97,9 +97,26 @@ def pricing_page():
                 ]
             )
 
+            # Call OpenAI API
+            response = openai.ChatCompletion.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": "You are a pricing optimization AI."},
+                    {
+                        "role": "user", 
+                        "content": (
+                            "Optimize pricing based on this data. "
+                            "Return a JSON array of optimized prices only (e.g., [110, 190, 160, 240]). "
+                            f"Data: {user_data.to_dict(orient='records')}"
+                        )
+                    }
+                ]
+            )
+
             # Parse response content safely
+            raw_content_message = raw_response["choices"][0]["message"]["content"]
+            st.write("Raw AI Response:", raw_content_message)
             raw_content = response["choices"][0]["message"]["content"]
-            st.write("Raw AI Response:", raw_content)
             try:
                 # Ensure the output is valid JSON
                 suggestions = json.loads(raw_content)
