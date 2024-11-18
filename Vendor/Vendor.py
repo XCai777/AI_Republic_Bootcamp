@@ -88,6 +88,7 @@ def pricing_page():
     # Dynamic Pricing Section
     if st.button("Get Pricing Recommendations"):
         try:
+            # Call OpenAI API
             response = openai.ChatCompletion.create(
                 model="gpt-4o-mini",
                 messages=[
@@ -95,13 +96,24 @@ def pricing_page():
                     {"role": "user", "content": f"Optimize pricing based on this data: {user_data.to_dict(orient='records')}"}
                 ]
             )
-            suggestions = eval(response["choices"][0]["message"]["content"])  # Ensure the model output is valid Python
-            user_data["Optimized Price"] = suggestions
-            st.success("Pricing optimization complete!")
-            st.write(user_data)
+
+            # Parse response content safely
+            raw_content = response["choices"][0]["message"]["content"]
+            try:
+                # Ensure the output is valid JSON
+                suggestions = json.loads(raw_content)
+                if isinstance(suggestions, list) and len(suggestions) == len(user_data):
+                    user_data["Optimized Price"] = suggestions
+                    st.success("Pricing optimization complete!")
+                    st.write(user_data)
+                else:
+                    st.error("Invalid response format from the AI. Please try again.")
+            except json.JSONDecodeError:
+                st.error("The AI response could not be parsed. Ensure proper formatting in the model's output.")
+
         except Exception as e:
             st.error(f"Error generating prices: {e}")
-
+            
 def income_projection_page():
     st.title("Income Projection")
     user_data = load_user_data(st.session_state["user"]["data_file"])
