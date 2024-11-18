@@ -179,7 +179,7 @@ def main():
 
     # Main App Navigation with Tabs
     st.title("Dynamic Pricing App")
-    tabs = st.tabs(["Home", "My Pricing", "Income Projection", "Edit Prices", "About Me"])
+    tabs = st.tabs(["Home", "My Pricing", "Edit Prices", "Income Projection", "About Me"])
 
     # Assign content to each tab
     with tabs[0]:  # Home
