@@ -103,6 +103,41 @@ def pricing_page():
         except Exception as e:
             st.error(f"Error generating prices: {e}")            
 
+def save_data(dataframed):
+    csv_data = dataframed.to_csv(index=False)
+    encoded_csv_data = base64.b64encode(csv_data.encode('utf-8')).decode('utf-8')
+    
+    # GitHub repository details
+    url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
+    token = os.environ["GIT_TOKEN"]
+    #token = os.getenv("GIT_TOKEN")   
+    # Get the current SHA of the file to make an update
+    try:
+        response = requests.get(url, headers={"Authorization": f"token {token}"})
+        response_json = response.json()
+        file_sha = response_json['sha']
+    except Exception as e:
+        print("Failed to retrieve file SHA:", e)
+
+    # Prepare payload with updated content
+    payload = {
+        "message": "Update delivery status in CSV",
+        "content": encoded_csv_data,  # encode content in base64
+        "sha": file_sha
+    }
+    
+    # Update the CSV file on GitHub
+    try:
+        response = requests.put(url, headers={"Authorization": f"token {token}"}, data=json.dumps(payload))
+        if response.status_code == 200:
+            print("CSV file updated successfully on GitHub.")
+        else:
+            print("Failed to update CSV file:", response.json())
+    except Exception as e:
+        print("Error updating CSV file on GitHub:", e)
+    # Upload to the original URL if possible (e.g., through GitHub API or another storage system)
+
+
 def edit_prices_page():
     st.title("Edit Prices")
     user_data = load_user_data(st.session_state["user"]["data_file"])
@@ -139,9 +174,7 @@ def edit_prices_page():
             st.write(user_data)
 
             # Optionally, save the updated dataset to a new file
-            updated_file_path = f"data/{st.session_state['user']['username']}_updated.csv"
-            user_data.to_csv(updated_file_path, index=False)
-            st.info(f"Updated data saved to: {updated_file_path}")
+            save_data(user_data)
         except Exception as e:
             st.error(f"Error saving updated prices: {e}")
 
