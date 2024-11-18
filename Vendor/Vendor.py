@@ -187,12 +187,12 @@ def main():
 
     with tabs[1]:  # My Pricing
         pricing_page()
-
-    with tabs[2]:  # Income Projection
-        income_projection_page()
-
-    with tabs[3]:  # Edit Prices
+        
+    with tabs[2]:  # Edit Prices
         edit_prices_page()
+        
+    with tabs[3]:  # Income Projection
+        income_projection_page()
 
     with tabs[4]:  # About Me
         about_me_page()
