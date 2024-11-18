@@ -174,7 +174,7 @@ def about_me_page():
 def main():
     # Login Section
     if "authenticated" not in st.session_state:
-        login_page()  # Call your login function here
+        login()  # Call your login function here
         return
 
     # Main App Navigation with Tabs
