@@ -173,7 +173,7 @@ def about_me_page():
 
 def main():
     # Login Section
-    if "authenticated" not in st.session_state:
+    if "user" not in st.session_state:
         login()  # Call your login function here
         return
 
@@ -196,6 +196,7 @@ def main():
 
     with tabs[4]:  # About Me
         about_me_page()
+
 # Main App
 if "user" not in st.session_state:
     login()
