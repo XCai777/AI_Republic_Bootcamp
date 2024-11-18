@@ -65,7 +65,7 @@ def login():
             st.session_state["user"] = user
             st.session_state["api_token"] = api_token
             openai.api_key = api_token
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Invalid username or password.")
 
