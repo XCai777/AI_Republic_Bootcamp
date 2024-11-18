@@ -100,6 +100,8 @@ def pricing_page():
             # Parse response content safely
             raw_content_message = raw_response["choices"][0]["message"]["content"]
             st.write("Raw AI Response:", raw_content_message)
+        except Exception as e:
+            st.error(f"Error generating prices: {e}")            
 
 def edit_prices_page():
     st.title("Edit Prices")
@@ -142,6 +144,7 @@ def edit_prices_page():
             st.info(f"Updated data saved to: {updated_file_path}")
         except Exception as e:
             st.error(f"Error saving updated prices: {e}")
+
 
 def income_projection_page():
     st.title("Income Projection")
