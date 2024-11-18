@@ -175,7 +175,6 @@ def edit_prices_page():
             st.write(user_data)
             global new_user_data
             new_user_data = user_data
-            st.write(new_user_data)
             
             # Optionally, save the updated dataset to a new file
             save_data(user_data)
@@ -188,7 +187,6 @@ def income_projection_page():
     st.title("Income Projection")
     #user_data = load_user_data(st.session_state["user"]["data_file"])
     global new_user_data
-    st.write(new_user_data)
     if new_user_data.empty:
         st.warning("No data available for this user.")
         return
