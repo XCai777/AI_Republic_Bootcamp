@@ -84,7 +84,7 @@ def pricing_page():
 
     st.subheader("Your Data")
     st.write(user_data)
-
+    
     # Dynamic Pricing Section
     if st.button("Get Pricing Recommendations"):
         try:
@@ -97,41 +97,65 @@ def pricing_page():
                 ]
             )
 
-            # Call OpenAI API
-            response = openai.ChatCompletion.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "You are a pricing optimization AI."},
-                    {
-                        "role": "user", 
-                        "content": (
-                            "Optimize pricing based on this data. "
-                            "Return a JSON array of optimized prices only (e.g., [110, 190, 160, 240]). "
-                            f"Data: {user_data.to_dict(orient='records')}"
-                        )
-                    }
-                ]
-            )
-
             # Parse response content safely
             raw_content_message = raw_response["choices"][0]["message"]["content"]
             st.write("Raw AI Response:", raw_content_message)
-            raw_content = response["choices"][0]["message"]["content"]
-            try:
-                # Ensure the output is valid JSON
-                suggestions = json.loads(raw_content)
-                if isinstance(suggestions, list) and len(suggestions) == len(user_data):
-                    user_data["Optimized Price"] = suggestions
-                    st.success("Pricing optimization complete!")
-                    st.write(user_data)
-                else:
-                    st.error("Invalid response format from the AI. Please try again.")
-            except json.JSONDecodeError:
-                st.error("The AI response could not be parsed. Ensure proper formatting in the model's output.")
 
+
+Here’s how you can create another menu where the user can manually input new prices for their dataset and save the updated data to a new column called Optimized Price.
+
+Code for the New Menu
+Add a new menu item called "Edit Prices". This section will:
+
+Display the user’s dataset.
+Allow the user to input new prices manually.
+Save the new prices to a column called Optimized Price.
+Here’s the function for the Edit Prices menu:
+
+python
+Copy code
+def edit_prices_page():
+    st.title("Edit Prices")
+    user_data = load_user_data(st.session_state["user"]["data_file"])
+    
+    if user_data.empty:
+        st.warning("No data available for this user.")
+        return
+
+    st.subheader("Current Data")
+    st.write(user_data)
+
+    # Create input fields for each row
+    st.subheader("Manual Price Adjustment")
+    new_prices = []
+
+    for i in range(len(user_data)):
+        product_name = user_data.iloc[i]["Product"]
+        current_price = user_data.iloc[i]["Current Price"]
+
+        # Create an input field for each product
+        new_price = st.number_input(
+            label=f"Enter new price for {product_name} (Current Price: {current_price})",
+            min_value=0.0,
+            step=1.0,
+            key=f"new_price_{i}"  # Unique key for each input field
+        )
+        new_prices.append(new_price)
+
+    # Update the dataset with the new prices
+    if st.button("Save Updated Prices"):
+        try:
+            user_data["Optimized Price"] = new_prices
+            st.success("Prices updated successfully!")
+            st.write(user_data)
+
+            # Optionally, save the updated dataset to a new file
+            updated_file_path = f"data/{st.session_state['user']['username']}_updated.csv"
+            user_data.to_csv(updated_file_path, index=False)
+            st.info(f"Updated data saved to: {updated_file_path}")
         except Exception as e:
-            st.error(f"Error generating prices: {e}")
-            
+            st.error(f"Error saving updated prices: {e}")
+
 def income_projection_page():
     st.title("Income Projection")
     user_data = load_user_data(st.session_state["user"]["data_file"])
@@ -155,18 +179,35 @@ def about_me_page():
     st.title("About Me")
     st.write("This app provides AI-powered pricing optimization and market insights.")
 
+
+
+def main():
+    # Login Section
+    if "authenticated" not in st.session_state:
+        login_page()  # Call your login function here
+        return
+
+    # Main App Navigation with Tabs
+    st.title("Dynamic Pricing App")
+    tabs = st.tabs(["Home", "My Pricing", "Income Projection", "Edit Prices", "About Me"])
+
+    # Assign content to each tab
+    with tabs[0]:  # Home
+        home_page()
+
+    with tabs[1]:  # My Pricing
+        pricing_page()
+
+    with tabs[2]:  # Income Projection
+        income_projection_page()
+
+    with tabs[3]:  # Edit Prices
+        edit_prices_page()
+
+    with tabs[4]:  # About Me
+        about_me_page()
 # Main App
 if "user" not in st.session_state:
     login()
 else:
-    # Top Navigation Menu
-    menu = st.selectbox("Menu", ["Home", "My Pricing", "Income Projection", "About Me"], key="menu")
-
-    if menu == "Home":
-        home_page()
-    elif menu == "My Pricing":
-        pricing_page()
-    elif menu == "Income Projection":
-        income_projection_page()
-    elif menu == "About Me":
-        about_me_page()
+    main()
