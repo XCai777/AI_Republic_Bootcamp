@@ -57,7 +57,7 @@ def login():
     col1, col2, col3 = st.columns([2, 1, 2])
     with col2 :
         st.image("Vendor/images/Login.png")
-        st.title("Accessio Authentica!!!")
+        st.title("Accessio Authentica")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     api_token = st.text_input("OpenAI API Token", type="password")
@@ -71,7 +71,7 @@ def login():
             openai.api_key = api_token
             st.rerun()
         else:
-            st.error("Invalid username or password.")
+            st.error("Redo Authentica")
 
 # Pages
 def home_page():
