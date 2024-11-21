@@ -60,9 +60,9 @@ def login():
     col1, col2, col3 = st.columns([3, 2, 3])
     with col2 :
         st.title("Accessio Authentica")
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    api_token = st.text_input("OpenAI API Token", type="password")
+    username = st.text_input("Accio Identifierium", placeholder = "Enter Username Here...")
+    password = st.text_input("Obscura Protego", placeholder = "Enter Password Here...", type="password")
+    api_token = st.text_input("Clavis Unica", placeholder = "Enter OpenAI API Token Here...", type="password")
     
     if st.button("Log In"):
         user = authenticate_user(username, password)
