@@ -54,7 +54,7 @@ def load_user_data(file_path):
 
 # Login Screen
 def login():
-    st.title("Dynamic Pricing App Login")
+    st.title("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     api_token = st.text_input("OpenAI API Token", type="password")
