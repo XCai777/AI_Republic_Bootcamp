@@ -53,8 +53,11 @@ def load_user_data(file_path):
         return pd.DataFrame()
 
 # Login Screen
-def login():
-    st.title("Login")
+def login():        
+    col1, col2, col3 = st.columns([1, 1, 1])
+        with col2 :
+            st.image("Vendor/images/Login.png")
+            st.title("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     api_token = st.text_input("OpenAI API Token", type="password")
@@ -72,8 +75,10 @@ def login():
 
 # Pages
 def home_page():
-    st.title("Welcome to the Dynamic Pricing App!")
-    st.write("Navigate through the menu above to manage your pricing and analyze forecasts.")
+    st.title("Vendomort")
+    st.write("Ah, greetings, dear entrepreneur! I am Vendomort—the kind yet cunning lord of pricing strategy and market mastery. Once a formidable wielder of dark magic, I have traded my wand for the tools of commerce and analysis. After losing to Harry Potter, I sought redemption, and lo, I discovered a new realm where my talents could flourish: the bustling world of business.")
+    st.write("Now, I guide brave merchants like yourself, weaving the magic of data trends, competitor insights, and strategic brilliance to optimize pricing and conquer markets. With my trusty market apron and a touch of my signature flair, I ensure that your business thrives without the need for horcruxes.")
+    st.write("Whether it’s taming volatile demand, outwitting competitors, or creating the perfect profit margin, I am here to make your pricing magical. Together, we shall achieve greatness—and perhaps, a little market domination. 🪄✨")
 
 def pricing_page():
     st.title("My Pricing")
