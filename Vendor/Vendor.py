@@ -57,6 +57,8 @@ def login():
     col1, col2, col3 = st.columns([2, 1, 2])
     with col2 :
         st.image("Vendor/images/Login.png")
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col2 :
         st.title("Accessio Authentica")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
