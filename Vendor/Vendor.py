@@ -54,10 +54,10 @@ def load_user_data(file_path):
 
 # Login Screen
 def login():        
-    col1, col2, col3 = st.columns([1, 1, 1])
+    col1, col2, col3 = st.columns([2, 1, 2])
     with col2 :
         st.image("Vendor/images/Login.png")
-        st.title("Login")
+        st.title("Login Here!")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     api_token = st.text_input("OpenAI API Token", type="password")
