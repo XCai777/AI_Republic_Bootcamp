@@ -1,0 +1,90 @@
+Cost Analysis Results:
+Here is the cost-effectiveness analysis of various traffic sources based on ad spend, transactions, revenue, and revenue per spend:
+
+| Source             | Ad Spend     | Transactions | Revenue       | Revenue per Spend |
+|--------------------|--------------|--------------|---------------|--------------------|
+| (direct)           | 2,758,336,907| 197,467      | 1,256,781,676 | 0.455630           |
+| google             | 6,490,566,537| 388,169      | 2,406,178,484 | 0.370719           |
+| facebook           | 7,141,533,169| 377,909      | 2,465,492,458 | 0.345233           |
+| tiktok             | 2,308,870,038| 55,397       | 346,623,075   | 0.150127           |
+| cityads            | 1,616,344,923| 11,904       | 75,351,293    | 0.046618           |
+| instagram          | 2,004,995,201| 14,501       | 86,724,053    | 0.043254           |
+| promo              | 657,223,313  | 4,395        | 28,281,240    | 0.043031           |
+| co-promo           | 510,268,396  | 2,544        | 17,652,162    | 0.034594           |
+| newsletter         | 936,253,379  | 1,955        | 11,733,349    | 0.012532           |
+| advertise          | 187,301,342  | 372          | 2,322,300     | 0.012399           |
+| DuckDuckGo        | 617,281,511   | 693          | 4,858,295     | 0.007870           |
+| mytarget           | 292,067,191  | 318          | 2,181,073     | 0.007468           |
+| other              | 1,339,509,305| 1,537        | 9,699,979     | 0.007241           |
+| actionpay          | 424,164,578  | 470          | 2,930,145     | 0.006908           |
+| opmcpa             | 304,170,255  | 350          | 2,076,529     | 0.006827           |
+| bing               | 454,110,873  | 373          | 2,492,546     | 0.005489           |
+| vk                 | 773,382,832  | 598          | 3,256,876     | 0.004211           |
+| exponea            | 11,444,746   | 5            | 46,420        | 0.004056           |
+| sailplay           | 27,732,290    | 10           | 68,235        | 0.002460           |
+| facebook_direct    | 58,927,539    | 10           | 68,334        | 0.001160           |
+| baidu              | 11,410,882    | 0            | 0             | 0.000000           |
+| youtube            | 46,165,502    | 0            | 0             | 0.000000           |
+
+### Summary Insights:
+- The **most cost-effective source** is **(direct)** with a revenue per spend of **0.455630**.
+- **Google** and **Facebook** also show good performance with revenue per spend ratios of **0.370719** and **0.345233** respectively.
+- The least effective sources include **sailplay**, **facebook_direct**, **baidu**, and **youtube**, which have very low or zero revenue generated relative to their ad spend.
+
+This breakdown can help focus marketing efforts on the most effective channels.
+
+ROI Optimizer Results:
+The ROI data reveals several sources and mediums with varying levels of performance. Here are some insights based on the provided information:
+
+1. **Underperforming Campaigns**:
+   - Many campaigns have a low ROI, indicating that the revenue generated is significantly lower than the ad spend.
+   - Examples of underperforming sources include:
+     - TikTok (cpa) with an ROI of 0.106786.
+     - Direct traffic campaigns with ROIs as low as 0.006380.
+     - Co-promotion via email yielding an ROI of 0.089354.
+
+2. **Better Performing Campaigns**:
+   - The "facebook organic" channel has a relatively higher ROI of 0.760383.
+   - Other channels like "google cpc" have a moderate ROI of 0.655382, indicating potential for optimization without significant changes.
+
+3. **Potential Areas for Optimization**:
+   - Focus on campaigns with a ROI below 0.2 to analyze why they are underperforming and identify improvements.
+   - Assess the performance of channels that are underperforming despite high ad spend.
+
+This analysis highlights specific areas where ROI can be optimized, particularly by addressing campaigns with low returns on ad spend.
+
+Wastage Results:
+Here is a summary of the campaigns with their corresponding ad spend and transactions:
+
+| Source      | Medium | Ad Spend | Transactions |
+|-------------|--------|----------|--------------|
+| tiktok      | cpa    | 369185   | 6            |
+| instagram   | cpc    | 372718   | 6            |
+| instagram   | cpc    | 833607   | 4            |
+| (direct)    | (none) | 470848   | 4            |
+| tiktok      | cpa    | 526308   | 9            |
+| (direct)    | (none) | 491731   | 4            |
+| co-promo    | email  | 433598   | 1            |
+| google      | cpc    | 198570   | 1            |
+| (direct)    | (none) | 684341   | 1            |
+| tiktok      | cpa    | 523643   | 4            |
+
+This data provides insight into campaign performance, with ad spends that appear high but yield low conversions in some cases, such as those with only 1 or 4 transactions. Would you like a more detailed analysis or a specific focus on campaigns that have the highest spend with the least conversions?
+
+Scaling Strategist Results:
+To determine how to scale your business effectively, I analyzed the data based on sources, mediums, ad spend, revenue, and return on investment (ROI). Here are some highlighted insights based on high ROI and revenue potential:
+
+1. **High-Performing Ad Spend**:
+   - **Facebook CPC**: The campaigns with CPC (Cost Per Click) on Facebook performed particularly well, such as one with an ad spend of $162,954 generating $988,383 in revenue (ROI of 6.07). This indicates significant potential for scaling in this area.
+   - **Direct Source**: Several direct campaigns have shown exceptionally high ROI with one instance reaching a 12.53 ROI on an ad spend of $330,944 generating over $4.1 million in revenue.
+
+2. **Organic Efforts**:
+   - **Google Organic**: With a notable ROI of 3.93 at an ad spend of $357,920 generating $1,406,743, focusing on organic search efforts may bring scalable growth without direct ad costs.
+   - **Facebook Organic**: The organic source on Facebook also has a respectable ROI of 3.61, which suggests there might be additional growth opportunities by enhancing content engagement and reach.
+
+3. **Scaling Recommendations**:
+   - **Increase Facebook CPC Budget**: Given the success and high ROI from Facebook CPC campaigns, consider increasing the budget in this area to capitalize on its profitability.
+   - **Enhance Direct Marketing Efforts**: As certain direct campaigns have shown strong returns, investigate further into this channel to understand what drives conversions, perhaps enhancing sales funnels or refining customer outreach.
+   - **Optimize for Organic Growth**: Strengthening organic traffic (especially on Google) through SEO and content creation could lead to sustainable growth without the cost pressure of paid campaigns.
+
+In conclusion, focusing on efficient and high-performing ad sources such as Facebook CPC, enhancing direct engagement, and optimizing organic visibility can help scale your business profitably.
