@@ -79,7 +79,7 @@ Make sure you have Python installed on your system, and then run the following c
 
 ```bash
 pip install pandas numpy firecrawl swarm openai
-
+```
 
 ### **Step 2: Obtain and Configure OpenAI API Key**
 
@@ -95,7 +95,7 @@ Ensure the dataset is accessible, either from a public URL or locally. By defaul
 
 ```bash
 data = pd.read_csv('https://path/to/your/dataset.csv')
-
+```
 If using a local dataset, update the path accordingly:
 
 ```bash
