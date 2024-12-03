@@ -88,7 +88,7 @@ Replace "YOUR_API_KEY_HERE" in the script with your actual API key:
 
 ```bash
 api = OpenAI(api_key="YOUR_API_KEY_HERE")
-
+```
 ### **Step 3: Load the Dataset**
 
 Ensure the dataset is accessible, either from a public URL or locally. By default, the script uses a dataset hosted online:
@@ -100,13 +100,14 @@ If using a local dataset, update the path accordingly:
 
 ```bash
 data = pd.read_csv('path/to/your/local_dataset.csv')
-
+```
 ### **Step 4: Run the Agents**
 
 Each agent is designed to perform a specific analysis task. Run the script to execute all agents:
 
 ```bash
 python your_script.py
+```
 
 The following agents will be executed:
 
