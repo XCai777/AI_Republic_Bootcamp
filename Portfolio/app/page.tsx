@@ -33,7 +33,7 @@ export default function Home() {
           <div className="flex justify-center items-center">
             <div className="relative w-72 h-72 sm:w-96 sm:h-96">
               <Image
-                src="https://raw.githubusercontent.com/ALGOREX-PH/AI-Republic-Student-Portfolio-Template/refs/heads/main/app/images/Erwin.jpeg" // Change to your Photo Please
+                src="https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Portfolio/app/images/xcai.jpg" // Change to your Photo Please
                 alt="Profile"
                 fill
                 className="rounded-3xl object-cover"
