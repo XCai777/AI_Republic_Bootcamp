@@ -31,7 +31,7 @@ st.set_page_config(page_title="Truck-Kun, your partner in delivery", page_icon="
 @st.cache_data(ttl=20)
 def load_data():
     try:
-        return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/TruckKun/truckkun.csv')
+        return pd.read_csv('https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Projects/TruckKun/truckkun.csv')
     except Exception as e:
         st.error(f"Failed to load data: {e}")
         return pd.DataFrame()
