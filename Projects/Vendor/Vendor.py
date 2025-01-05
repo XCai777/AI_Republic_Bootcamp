@@ -26,7 +26,7 @@ import json
 
 
 # Mock user database
-USER_DB = "https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Vendor/Data/USER.csv"  # A CSV file with columns: username, password, data_file
+USER_DB = "https://raw.githubusercontent.com/XCai777/AI_Republic_Bootcamp/refs/heads/main/Projects/Vendor/Data/USER.csv"  # A CSV file with columns: username, password, data_file
 new_user_data = pd.DataFrame()
 
 # App title
@@ -56,7 +56,7 @@ def load_user_data(file_path):
 def login():        
     col1, col2, col3 = st.columns([2, 1, 2])
     with col2 :
-        st.image("Vendor/images/Login.png")
+        st.image("Projects/Vendor/images/Login.png")
     col1, col2, col3 = st.columns([3, 2, 3])
     with col2 :
         st.title("Accessio Authentica")
@@ -156,7 +156,7 @@ def save_data(dataframed):
     encoded_csv_data = base64.b64encode(csv_data.encode('utf-8')).decode('utf-8')
     
     # GitHub repository details
-    url = "https://api.github.com/repos/XCai777/AI_Republic_Bootcamp/contents/TruckKun/truckkun.csv"
+    url = load_user_data(st.session_state["user"]["data_file"])
     token = os.environ["GIT_TOKEN"]
     #token = os.getenv("GIT_TOKEN")   
     # Get the current SHA of the file to make an update
