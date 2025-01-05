@@ -1,0 +1,1 @@
+This is the notebook used for creating cl-AI-mate, a simple chatbot that gives responses to questions about climate. May it be about global warming, gases, or substances that affects our climate, it can answer.
