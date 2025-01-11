@@ -20,7 +20,7 @@ def evaluate_book_cover(image_bytes):
     
     try:
         response = requests.post(
-            "https://api.gpt4mini.com/v1/chat/completions",  # Replace with actual GPT4-mini endpoint
+            "https://api.openai.com/v1/chat/completions",  # Replace with actual GPT4-mini endpoint
             headers=headers,
             json={
                 "model": "gpt-4o-mini",
