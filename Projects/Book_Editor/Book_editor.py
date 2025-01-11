@@ -4,19 +4,35 @@ from PIL import Image
 import io
 import PyPDF2
 import os
+import base64
 
 # Set your API token
 API_TOKEN = st.secrets["API_TOKEN"]
 
-def evaluate_book_cover(image_bytes):
-    # Convert image to base64 or appropriate format for API
-    # This is a placeholder - adjust according to GPT4-mini API requirements
+def encode_image_to_base64(image):
+    # Convert PIL Image to base64
+    buffered = io.BytesIO()
+    image.save(buffered, format="PNG")
+    return base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+def evaluate_book_cover(image):
+    # Convert image to base64
+    base64_image = encode_image_to_base64(image)
+    
     headers = {
         "Authorization": f"Bearer {API_TOKEN}",
         "Content-Type": "application/json"
     }
     
-    prompt = "Evaluate this book cover and provide specific recommendations for improvement."
+    prompt = f"""Analyze this book cover image and provide detailed feedback on:
+    1. Visual Appeal
+    2. Typography and Font Choice
+    3. Color Scheme
+    4. Image Composition
+    5. Genre Appropriateness
+    6. Marketing Appeal
+    
+    Then provide specific recommendations for improvement in each area."""
     
     try:
         response = requests.post(
@@ -26,7 +42,7 @@ def evaluate_book_cover(image_bytes):
                 "model": "gpt-4o-mini",
                 "messages": [
                     {"role": "system", "content": "You are a professional book cover designer and critic."},
-                    {"role": "user", "content": prompt}
+                    {"role": "user", "content": f"Here is a book cover image in base64 format: {base64_image}\n\n{prompt}"}
                 ]
             }
         )
@@ -42,7 +58,7 @@ def generate_cover_suggestion(recommendations):
     
     try:
         response = requests.post(
-            "https://api.gpt4mini.com/v1/chat/completions",  # Replace with actual GPT4-mini endpoint
+            "https://api.openai.com/v1/chat/completions",  # Replace with actual GPT4-mini endpoint
             headers=headers,
             json={
                 "model": "gpt-4o-mini",
@@ -67,13 +83,13 @@ def analyze_story(text):
         text_chunk = text[:4000]  # Adjust size based on API limits
         
         response = requests.post(
-            "https://api.gpt4mini.com/v1/chat/completions",  # Replace with actual GPT4-mini endpoint
+            "https://api.openai.com/v1/chat/completions",  # Replace with actual GPT4-mini endpoint
             headers=headers,
             json={
                 "model": "gpt-4o-mini",
                 "messages": [
                     {"role": "system", "content": "You are a professional book editor and critic."},
-                    {"role": "user", "content": f"Analyze this story and provide a summary, editing suggestions, and recommendations: {text_chunk}"}
+                    {"role": "user", "content": f"Analyze this story and provide:\n1. Summary\n2. Plot Analysis\n3. Character Development\n4. Writing Style Evaluation\n5. Specific Editing Suggestions\n6. Overall Recommendations\n\nHere's the text: {text_chunk}"}
                 ]
             }
         )
@@ -96,16 +112,12 @@ def main():
             
             if st.button("Evaluate Cover"):
                 with st.spinner("Evaluating cover..."):
-                    # Convert image to bytes for API
-                    img_byte_arr = io.BytesIO()
-                    image.save(img_byte_arr, format=image.format)
-                    img_byte_arr = img_byte_arr.getvalue()
-                    
-                    evaluation = evaluate_book_cover(img_byte_arr)
+                    evaluation = evaluate_book_cover(image)
                     st.write("### Evaluation and Recommendations:")
                     st.write(evaluation)
                     
-                    if st.button("Generate New Cover Suggestion"):
+                    st.write("### Generate New Cover Design")
+                    if st.button("Generate Cover Suggestion"):
                         with st.spinner("Generating suggestion..."):
                             suggestion = generate_cover_suggestion(evaluation)
                             st.write("### New Cover Suggestion:")
