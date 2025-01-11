@@ -46,7 +46,25 @@ def evaluate_book_cover(image):
                 ]
             }
         )
-        return response.json()["choices"][0]["message"]["content"]
+        
+        # Add error handling and response validation
+        if response.status_code != 200:
+            return f"API Error: Status code {response.status_code}"
+            
+        response_data = response.json()
+        if "error" in response_data:
+            return f"API Error: {response_data['error']}"
+            
+        # Check if response has the expected structure
+        if "choices" not in response_data or not response_data["choices"]:
+            return "Error: Unexpected API response format"
+            
+        return response_data["choices"][0]["message"]["content"]
+        
+    except requests.exceptions.RequestException as e:
+        return f"Network Error: {str(e)}"
+    except ValueError as e:
+        return f"JSON Parsing Error: {str(e)}"
     except Exception as e:
         return f"Error in evaluation: {str(e)}"
 
@@ -68,7 +86,23 @@ def generate_cover_suggestion(recommendations):
                 ]
             }
         )
-        return response.json()["choices"][0]["message"]["content"]
+        
+        if response.status_code != 200:
+            return f"API Error: Status code {response.status_code}"
+            
+        response_data = response.json()
+        if "error" in response_data:
+            return f"API Error: {response_data['error']}"
+            
+        if "choices" not in response_data or not response_data["choices"]:
+            return "Error: Unexpected API response format"
+            
+        return response_data["choices"][0]["message"]["content"]
+        
+    except requests.exceptions.RequestException as e:
+        return f"Network Error: {str(e)}"
+    except ValueError as e:
+        return f"JSON Parsing Error: {str(e)}"
     except Exception as e:
         return f"Error in generation: {str(e)}"
 
@@ -93,12 +127,31 @@ def analyze_story(text):
                 ]
             }
         )
-        return response.json()["choices"][0]["message"]["content"]
+        
+        if response.status_code != 200:
+            return f"API Error: Status code {response.status_code}"
+            
+        response_data = response.json()
+        if "error" in response_data:
+            return f"API Error: {response_data['error']}"
+            
+        if "choices" not in response_data or not response_data["choices"]:
+            return "Error: Unexpected API response format"
+            
+        return response_data["choices"][0]["message"]["content"]
+        
+    except requests.exceptions.RequestException as e:
+        return f"Network Error: {str(e)}"
+    except ValueError as e:
+        return f"JSON Parsing Error: {str(e)}"
     except Exception as e:
         return f"Error in analysis: {str(e)}"
 
 def main():
     st.title("Book Analysis Assistant")
+    
+    # Add debug mode toggle
+    debug_mode = st.sidebar.checkbox("Debug Mode")
     
     tab1, tab2 = st.tabs(["Cover Evaluation", "Story Analysis"])
     
@@ -113,15 +166,25 @@ def main():
             if st.button("Evaluate Cover"):
                 with st.spinner("Evaluating cover..."):
                     evaluation = evaluate_book_cover(image)
-                    st.write("### Evaluation and Recommendations:")
-                    st.write(evaluation)
                     
-                    st.write("### Generate New Cover Design")
-                    if st.button("Generate Cover Suggestion"):
-                        with st.spinner("Generating suggestion..."):
-                            suggestion = generate_cover_suggestion(evaluation)
-                            st.write("### New Cover Suggestion:")
-                            st.write(suggestion)
+                    if debug_mode:
+                        st.write("Debug - API Response:", evaluation)
+                    
+                    if not evaluation.startswith("Error"):
+                        st.write("### Evaluation and Recommendations:")
+                        st.write(evaluation)
+                        
+                        st.write("### Generate New Cover Design")
+                        if st.button("Generate Cover Suggestion"):
+                            with st.spinner("Generating suggestion..."):
+                                suggestion = generate_cover_suggestion(evaluation)
+                                if not suggestion.startswith("Error"):
+                                    st.write("### New Cover Suggestion:")
+                                    st.write(suggestion)
+                                else:
+                                    st.error(suggestion)
+                    else:
+                        st.error(evaluation)
     
     with tab2:
         st.header("Story Analysis")
@@ -136,8 +199,15 @@ def main():
             if st.button("Analyze Story"):
                 with st.spinner("Analyzing story..."):
                     analysis = analyze_story(text)
-                    st.write("### Story Analysis:")
-                    st.write(analysis)
+                    
+                    if debug_mode:
+                        st.write("Debug - API Response:", analysis)
+                    
+                    if not analysis.startswith("Error"):
+                        st.write("### Story Analysis:")
+                        st.write(analysis)
+                    else:
+                        st.error(analysis)
 
 if __name__ == "__main__":
     main()
